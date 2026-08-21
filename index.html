@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- =========================================================================
-     NEXORIA — лендинг агентства AI-автоматизации. Один файл, без библиотек.
+     NEXORIA — сайт студии автоматизации. Один файл, без библиотек.
 
      ГДЕ МЕНЯТЬ:
        1) <title> и <meta name="description"> — прямо ниже.
@@ -14,271 +14,250 @@
           Быстро: Ctrl+F по  t.me/Nexoria_studio  и заменить все.
        4) Цены и сроки — секция  << ЦЕНЫ >>.
        5) Услуги и иконки на плитках — секция  << УСЛУГИ >>.
+       6) Схема интеграций и сценарии — секция  << ИНТЕГРАЦИИ >>.
      ========================================================================= -->
 
-<title>NEXORIA — Telegram-боты и AI-автоматизация для малого бизнеса</title>
-<meta name="description" content="Делаем Telegram-ботов и AI-помощников: отвечают на частые вопросы, собирают заявки и передают их владельцу. Первое решение — от 2 дней, от 2 900 ₽.">
-<meta name="theme-color" content="#0A0908">
-<meta property="og:title" content="NEXORIA — Telegram-боты и AI-автоматизация">
-<meta property="og:description" content="Клиент пишет. Бот отвечает. Заявка у вас в Telegram.">
+<title>NEXORIA — автоматизация бизнеса: AI-агенты, Telegram-боты, CRM-интеграции</title>
+<meta name="description" content="Автоматизируем процессы, которые бизнес всё ещё делает вручную: AI-агенты, Telegram-боты, интеграции с CRM, автоворонки и внутренняя автоматизация. Собираем систему под задачи бизнеса.">
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:title" content="NEXORIA — автоматизация бизнеса">
+<meta property="og:description" content="AI-агенты, Telegram-боты, интеграции с CRM и автоматизация заявок — собираем систему под задачи бизнеса.">
 <meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0A0B'/%3E%3Ccircle cx='9' cy='23' r='3' fill='%233E7BFA'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%233E7BFA'/%3E%3Cpath d='M9 23L23 9' stroke='%233E7BFA' stroke-width='2'/%3E%3C/svg%3E">
 
 <style>
 /* ============================== ТОКЕНЫ ============================== */
 :root{
-  --ink:#0A0908;
-  --surface:rgba(255,255,255,.026);
+  --bg:#0A0A0B;
+  --fg:#F4F5F6;
+  --muted:#9A9DA5;
+  --dim:#65686F;
+  --line:rgba(244,245,246,.10);
+  --line-hi:rgba(244,245,246,.2);
+  --surface:rgba(255,255,255,.025);
   --surface-hi:rgba(255,255,255,.05);
-  --line:rgba(245,241,236,.10);
-  --line-hi:rgba(245,241,236,.2);
-  --cream:#F5F1EC;
-  --muted:#9C948C;
-  --dim:#6E675F;
-  --amber:#FF7A1A;
-  --ember:#C2410C;
-  --amber-soft:rgba(255,122,26,.13);
-  --glow:rgba(255,122,26,.3);
-  --r:14px; --r-lg:22px;
+  --accent:#3E7BFA;
+  --accent-2:#2455D6;
+  --accent-soft:rgba(62,123,250,.14);
+  --accent-glow:rgba(62,123,250,.32);
+  --r:14px; --r-lg:20px;
   --maxw:1180px;
   --font:"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,"DejaVu Sans Mono",monospace;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{overflow-x:hidden;width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
 a{color:inherit;text-decoration:none}
 svg{display:block}
 button{font:inherit}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+ul{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-.aura{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.aura i{position:absolute;border-radius:50%;filter:blur(130px);display:block}
-.aura i:nth-child(1){width:620px;height:620px;top:-300px;left:-180px;background:radial-gradient(circle,rgba(255,122,26,.30),transparent 70%)}
-.aura i:nth-child(2){width:540px;height:540px;top:640px;right:-240px;background:radial-gradient(circle,rgba(194,65,12,.34),transparent 70%)}
-.aura i:nth-child(3){width:520px;height:520px;bottom:-260px;left:20%;background:radial-gradient(circle,rgba(255,122,26,.14),transparent 70%)}
+.bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(244,245,246,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(244,245,246,.045) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 35%,transparent 92%);
+  mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,#000 35%,transparent 92%);
+}
 
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative;z-index:1}
 
 /* ============================== ТИПОГРАФИКА ============================== */
-h1,h2,h3{margin:0;font-weight:650;line-height:1.08;letter-spacing:-.035em}
-h1{font-size:clamp(38px,7.4vw,86px);letter-spacing:-.05em}
-h2{font-size:clamp(28px,4.6vw,50px);letter-spacing:-.042em}
-h3{font-size:18.5px;letter-spacing:-.02em;line-height:1.25}
+h1,h2,h3{margin:0;font-weight:640;line-height:1.1;letter-spacing:-.03em}
+h1{font-size:clamp(34px,6vw,68px);letter-spacing:-.04em}
+h2{font-size:clamp(26px,4vw,42px);letter-spacing:-.035em}
+h3{font-size:18px;letter-spacing:-.015em;line-height:1.3}
 p{margin:0}
-.amber{color:var(--amber)}
-.shimmer{background:linear-gradient(90deg,var(--amber) 0%,#FFD8A8 30%,var(--amber) 60%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3.4s linear infinite}
-@keyframes shimmer{to{background-position:-220% center}}
-.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:10px}
-.label::before{content:"";width:18px;height:1px;background:var(--amber)}
-.lead{color:var(--muted);font-size:clamp(15px,1.6vw,18.5px);line-height:1.55}
+.accent{color:var(--accent)}
+.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.label::before{content:"";width:18px;height:1px;background:var(--accent)}
+.lead{color:var(--muted);font-size:clamp(15px,1.5vw,17.5px);line-height:1.55}
+.grad-word{background:linear-gradient(100deg,var(--accent) 10%,#9CC1FF 45%,var(--accent) 80%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 7s ease-in-out infinite}
+@keyframes gradShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
 .fine{font-size:13px;color:var(--dim);line-height:1.55}
 
 /* ============================== КНОПКИ ============================== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 24px;border-radius:11px;font-size:15px;font-weight:520;border:1px solid transparent;cursor:pointer;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s,background .3s,border-color .3s,color .3s}
-.btn--primary{background:linear-gradient(135deg,var(--ember),var(--amber));color:#fff;box-shadow:0 10px 34px -12px var(--glow)}
-.btn--primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px -12px var(--glow)}
-.btn--primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transition:left .55s ease}
-.btn--primary:hover::after{left:130%}
-.btn--ghost{border-color:var(--line-hi);color:var(--cream);background:var(--surface)}
-.btn--ghost:hover{border-color:var(--amber);background:var(--amber-soft);color:var(--amber)}
-.btn--sm{padding:11px 17px;font-size:14px;border-radius:9px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 23px;border-radius:10px;font-size:15px;font-weight:520;border:1px solid transparent;cursor:pointer;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s,background .3s,border-color .3s,color .3s}
+.btn--primary{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;box-shadow:0 10px 30px -14px var(--accent-glow)}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px -14px var(--accent-glow)}
+.btn--ghost{border-color:var(--line-hi);color:var(--fg);background:var(--surface)}
+.btn--ghost:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.btn--sm{padding:10px 16px;font-size:13.5px;border-radius:9px}
 .btn--wide{width:100%}
-.btn--xl{padding:19px 36px;font-size:17px;border-radius:13px}
+.btn--xl{padding:17px 32px;font-size:16px;border-radius:12px}
 
 /* ============================== ШАПКА ============================== */
-.hdr{position:sticky;top:0;z-index:60;background:rgba(10,9,8,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.hdr__in{display:flex;align-items:center;gap:22px;height:66px}
-.logo{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.16em;font-size:14.5px}
-.logo svg{width:22px;height:24px;color:var(--cream)}
+.hdr{position:sticky;top:0;z-index:60;background:rgba(10,10,11,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.hdr__in{display:flex;align-items:center;gap:22px;height:64px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.16em;font-size:14px}
+.logo svg{width:20px;height:23px;color:var(--fg)}
 .nav{display:flex;gap:4px;margin-left:auto;font-size:14px}
 .nav a{color:var(--muted);padding:8px 12px;border-radius:8px;transition:color .2s,background .2s}
-.nav a:hover{color:var(--cream);background:var(--surface)}
-.nav a.is-active{color:var(--amber)}
-.progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,var(--ember),var(--amber));z-index:2}
-.burger{display:none;margin-left:auto;width:42px;height:38px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--cream);align-items:center;justify-content:center;cursor:pointer}
-.burger span{display:block;width:17px;height:1.5px;background:currentColor;position:relative}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:17px;height:1.5px;background:currentColor;transition:.22s}
+.nav a:hover{color:var(--fg);background:var(--surface)}
+.nav a.is-active{color:var(--accent)}
+.progress{position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));z-index:2}
+.burger{display:none;margin-left:auto;width:40px;height:36px;border-radius:9px;background:var(--surface);border:1px solid var(--line);color:var(--fg);align-items:center;justify-content:center;cursor:pointer}
+.burger span{display:block;width:16px;height:1.5px;background:currentColor;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:currentColor;transition:.22s}
 .burger span::before{top:-5px}.burger span::after{top:5px}
 .burger[aria-expanded="true"] span{background:transparent}
 .burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
 .burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
-.mnav{display:none;border-top:1px solid var(--line);background:rgba(10,9,8,.98)}
+.mnav{display:none;border-top:1px solid var(--line);background:rgba(10,10,11,.98)}
 .mnav.is-open{display:block}
-.mnav a{display:block;padding:15px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}
+.mnav a{display:block;padding:14px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}
 .mnav .btn{margin:16px 22px 20px;width:calc(100% - 44px)}
 
 /* ============================== СЕКЦИИ ============================== */
-.sec{padding:clamp(64px,8vw,116px) 0;position:relative;z-index:1}
-.sec[id]{scroll-margin-top:80px}
-.sec-head{max-width:660px;margin-bottom:44px;display:flex;flex-direction:column;gap:16px}
+.sec{padding:clamp(56px,7vw,104px) 0;position:relative;z-index:1}
+.sec[id]{scroll-margin-top:78px}
+.sec-head{max-width:660px;margin-bottom:40px;display:flex;flex-direction:column;gap:14px}
+.sec--alt{border-top:1px solid var(--line)}
 
 /* ============================== ПЕРВЫЙ ЭКРАН ============================== */
-.hero{padding:clamp(52px,7vw,96px) 0 clamp(28px,4vw,48px);position:relative}
-.hero__dots{position:absolute;inset:0;pointer-events:none;z-index:0}
-.hero__dots span{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:.4;animation:dotFloat 6.5s ease-in-out infinite}
-@keyframes dotFloat{0%,100%{transform:translateY(0);opacity:.32}50%{transform:translateY(-16px);opacity:.72}}
-.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center;position:relative;z-index:1}
-.hero__copy{position:relative;display:flex;flex-direction:column;gap:26px;max-width:600px}
-.hero h1 .l2{display:block;padding-left:.09em}
-.hero h1 .l3{display:block;padding-left:.18em}
+.hero{padding:clamp(48px,6vw,84px) 0 clamp(24px,4vw,44px);position:relative}
+.hero::before{content:"";position:absolute;top:-8%;left:50%;transform:translateX(-50%);width:960px;max-width:160vw;height:520px;background:radial-gradient(ellipse at center,var(--accent-soft),transparent 72%);filter:blur(70px);opacity:.55;pointer-events:none;z-index:0}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero__copy{display:flex;flex-direction:column;gap:24px;max-width:600px}
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
-.meta{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim);text-transform:uppercase}
+.meta{display:flex;flex-wrap:wrap;gap:10px 20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);text-transform:uppercase}
 .meta span{display:flex;align-items:center;gap:8px}
-.meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber);flex:none}
-.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:clamp(44px,6vw,76px);color:var(--dim);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;position:relative;z-index:1}
-.scroll-cue__line{width:1px;height:32px;background:linear-gradient(180deg,var(--amber),transparent);animation:cueMove 1.9s ease-in-out infinite}
-@keyframes cueMove{0%,100%{transform:scaleY(1);opacity:.4}50%{transform:scaleY(1.3);opacity:1}}
+.meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
 
-/* панель входящих */
-.inbox-wrap{position:relative}
-.inbox{position:relative;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));box-shadow:0 60px 120px -50px var(--glow),0 0 0 1px rgba(255,255,255,.02);overflow:hidden}
-.inbox__bar{display:flex;align-items:center;gap:9px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,26,.5)}70%{box-shadow:0 0 0 9px rgba(255,122,26,0)}100%{box-shadow:0 0 0 0 rgba(255,122,26,0)}}
-.inbox__body{padding:20px 18px;display:flex;flex-direction:column;gap:11px;min-height:330px}
-.bub{max-width:84%;font-size:14.5px;line-height:1.45;padding:11px 14px;border-radius:13px;opacity:0;transform:translateY(10px)}
-.bub--in{background:rgba(255,255,255,.055);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
-.bub--out{background:var(--amber-soft);border:1px solid rgba(255,122,26,.35);align-self:flex-end;border-bottom-right-radius:4px;color:var(--cream)}
-.ticket{margin-top:auto;border:1px solid rgba(255,122,26,.45);border-radius:15px;background:linear-gradient(180deg,rgba(255,122,26,.14),rgba(255,122,26,.05));padding:15px;opacity:0;transform:translateY(12px) scale(.97)}
-.ticket__h{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:11px}
-.ticket__r{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;padding:6px 0;border-bottom:1px solid rgba(245,241,236,.08)}
-.ticket__r:last-child{border-bottom:0}
-.ticket__r b{font-weight:500}
-.ticket__r span:first-child{color:var(--dim)}
-.play{opacity:1!important;transform:none!important;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.3,1)}
+/* ---- панель-схема потока данных ---- */
+.flow{position:relative;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));overflow:hidden}
+.flow__bar{display:flex;align-items:center;gap:9px;padding:13px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,123,250,.5)}70%{box-shadow:0 0 0 8px rgba(62,123,250,0)}100%{box-shadow:0 0 0 0 rgba(62,123,250,0)}}
+.flow__body{padding:28px 24px 30px;position:relative}
+.flow__rail{position:absolute;left:30px;top:30px;bottom:30px;width:1px;background:var(--line)}
+.flow__rail i{position:absolute;left:-2px;width:5px;height:5px;border-radius:50%;background:var(--accent);top:0;opacity:0;animation:flowDot 6s cubic-bezier(.3,0,.3,1) infinite}
+@keyframes flowDot{0%{top:0%;opacity:0}4%{opacity:1}94%{opacity:1}100%{top:100%;opacity:0}}
+.flow__step{position:relative;display:flex;align-items:flex-start;gap:16px;padding:15px 0}
+.flow__node{width:12px;height:12px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line-hi);flex:none;margin-top:3px;position:relative;z-index:1;transition:border-color .4s,background .4s,box-shadow .4s}
+.flow__step.is-hot .flow__node{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.flow__txt{display:flex;flex-direction:column;gap:5px}
+.flow__txt b{font-size:14.5px;font-weight:560;letter-spacing:-.01em;transition:color .4s}
+.flow__step.is-hot .flow__txt b{color:var(--accent)}
+.flow__txt span{font-size:12.5px;color:var(--dim)}
+.flow__sub{display:flex;gap:8px;margin-top:2px}
+.flow__chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;border:1px solid var(--line-hi);border-radius:7px;padding:4px 8px;color:var(--muted)}
 
-/* ============================== БЕГУЩАЯ СТРОКА (вопросы клиентов) ============================== */
-.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;position:relative;z-index:1;background:rgba(255,255,255,.012)}
-.ticker__track{display:flex;gap:0;width:max-content;animation:slide 42s linear infinite}
-.ticker:hover .ticker__track{animation-play-state:paused}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ticker__i{display:flex;align-items:center;gap:16px;padding:0 22px;font-size:15px;color:var(--muted);white-space:nowrap}
-.ticker__i::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.55}
-
-/* ============================== ПЛИТКА УСЛУГ (иконка + короткое описание) ============================== */
-.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tile{border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 24px;background:var(--surface);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:border-color .3s,background .3s,transform .3s}
-.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(255,122,26,.10),transparent 62%);opacity:0;transition:opacity .35s;pointer-events:none}
-.tile:hover{border-color:rgba(255,122,26,.4);background:var(--surface-hi);transform:translateY(-4px)}
+/* ============================== ПЛИТКА (услуги) ============================== */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;background:var(--surface);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:border-color .3s,background .3s,transform .3s}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(62,123,250,.10),transparent 62%);opacity:0;transition:opacity .35s;pointer-events:none}
+.tile:hover{border-color:rgba(62,123,250,.4);background:var(--surface-hi);transform:translateY(-3px)}
 .tile:hover::before{opacity:1}
-.tile__icon{width:46px;height:46px;border-radius:13px;border:1px solid rgba(255,122,26,.35);background:var(--amber-soft);display:flex;align-items:center;justify-content:center;color:var(--amber);flex:none;transition:transform .3s,border-color .3s}
+.tile__icon{width:46px;height:46px;border-radius:12px;border:1px solid rgba(62,123,250,.35);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;transition:transform .3s,border-color .3s}
 .tile__icon svg{width:21px;height:21px;overflow:visible}
-.tile:hover .tile__icon{transform:translateY(-3px);border-color:rgba(255,122,26,.55)}
+.tile:hover .tile__icon{transform:translateY(-3px);border-color:rgba(62,123,250,.55)}
 .tile p{color:var(--muted);font-size:14.5px;margin-top:2px}
-
-/* ============================== ДЛЯ КОГО ============================== */
-.who{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
-.quote{border-left:2px solid var(--amber);padding:6px 0 6px 22px;font-size:clamp(17px,2.2vw,22px);line-height:1.45;letter-spacing:-.02em}
-.niche-ticker{display:flex;flex-direction:column;gap:14px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.niche-row{display:flex;gap:12px;width:max-content}
-.niche-row--a{animation:niche-left 30s linear infinite}
-.niche-row--b{animation:niche-right 34s linear infinite}
-.niche-row:hover{animation-play-state:paused}
-@keyframes niche-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes niche-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.tag{border:1px solid var(--line);border-radius:999px;padding:10px 19px;font-size:14.5px;background:var(--surface);white-space:nowrap;transition:border-color .25s,color .25s}
-.tag:hover{border-color:var(--amber);color:var(--amber)}
-
-/* ============================== ПРОЦЕСС ============================== */
-.rail{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 32px;border-top:1px solid var(--line)}
-.rail__s{padding-top:30px;position:relative}
-.rail__s::before{content:"";position:absolute;top:-1px;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--amber),transparent);transition:width .9s cubic-bezier(.2,.7,.3,1)}
-.rail__s.is-in::before{width:100%}
-.rail__s + .rail__s::after{content:"";position:absolute;left:-16px;top:30px;bottom:0;width:1px;background:var(--line)}
-.rail__n{font-family:var(--mono);font-size:16px;color:var(--amber);letter-spacing:.1em;margin-bottom:15px;display:block;font-weight:600}
-.rail__s h3{margin-bottom:8px}
-.rail__s p{color:var(--muted);font-size:14.5px}
-.note{margin-top:26px;border:1px solid var(--line);border-radius:var(--r);padding:17px 22px;display:flex;align-items:center;gap:13px;background:var(--surface);font-size:15px;color:var(--muted)}
-.note b{color:var(--cream);font-weight:600}
+.tile__tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:16px;border-top:1px solid var(--line);position:relative;z-index:1}
+.tile__tags span{font-family:var(--mono);font-size:11px;color:var(--muted);background:rgba(255,255,255,.03);border:1px solid var(--line-hi);border-radius:7px;padding:4px 9px}
 
 /* ============================== ДЕМО ============================== */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .demo{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s,transform .3s}
-.demo:hover{border-color:var(--line-hi);transform:translateY(-4px)}
-.chip{align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,122,26,.4);color:var(--amber);border-radius:999px;padding:5px 11px}
-.screen{border:1px solid var(--line);border-radius:13px;padding:14px;background:rgba(0,0,0,.32);display:flex;flex-direction:column;gap:8px;min-height:150px}
+.demo:hover{border-color:var(--line-hi);transform:translateY(-3px)}
+.chip{align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(62,123,250,.4);color:var(--accent);border-radius:999px;padding:5px 11px}
+.screen{border:1px solid var(--line);border-radius:12px;padding:14px;background:rgba(0,0,0,.32);display:flex;flex-direction:column;gap:8px;min-height:150px}
 .m{font-size:13px;line-height:1.4;border-radius:10px;padding:8px 11px;max-width:90%}
-.m--in{background:rgba(255,255,255,.055);align-self:flex-start}
-.m--out{background:rgba(255,122,26,.16);border:1px solid rgba(255,122,26,.3);align-self:flex-end}
+.m--in{background:rgba(255,255,255,.05);align-self:flex-start}
+.m--out{background:rgba(62,123,250,.14);border:1px solid rgba(62,123,250,.3);align-self:flex-end}
 .mini{display:flex;flex-wrap:wrap;gap:6px}
-.mini span{font-size:11.5px;border:1px solid rgba(255,122,26,.35);border-radius:8px;padding:5px 9px;color:var(--amber)}
+.mini span{font-size:11.5px;border:1px solid rgba(62,123,250,.32);border-radius:8px;padding:5px 9px;color:var(--accent)}
 .demo p{color:var(--muted);font-size:14px}
 .demo .btn{margin-top:auto}
 
+/* ============================== ТАЙМЛАЙН (как работаем) ============================== */
+.timeline{position:relative;padding-left:44px}
+.timeline__line{position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.timeline__line::after{content:"";position:absolute;left:0;top:0;width:100%;height:var(--fill,0%);background:linear-gradient(180deg,var(--accent-2),var(--accent));transition:height .12s linear}
+.tl-step{position:relative;padding:0 0 34px;display:flex;flex-direction:column;gap:6px}
+.tl-step:last-child{padding-bottom:0}
+.tl-step::before{content:"";position:absolute;left:-44px;top:2px;width:23px;height:23px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line-hi)}
+.tl-step__n{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.08em}
+.tl-step p{color:var(--muted);font-size:14.5px;max-width:640px}
+.note{margin-top:30px;border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:12px;background:var(--surface);font-size:14.5px;color:var(--muted)}
+
+/* ============================== ПОЧЕМУ NEXORIA ============================== */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.why{border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 24px;background:var(--surface);display:flex;flex-direction:column;gap:10px;transition:border-color .3s,transform .3s}
+.why:hover{border-color:var(--line-hi);transform:translateY(-3px)}
+.why__n{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+.why p{color:var(--muted);font-size:14.5px}
+
 /* ============================== ЦЕНЫ ============================== */
-.price{border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 26px;background:var(--surface);display:flex;flex-direction:column;gap:15px;position:relative;transition:border-color .3s,transform .3s}
-.price:hover{border-color:var(--line-hi);transform:translateY(-4px)}
-.price--hi{border-color:rgba(255,122,26,.5);background:linear-gradient(180deg,rgba(255,122,26,.1),rgba(255,255,255,.02));box-shadow:0 40px 90px -60px var(--glow)}
-.price__tag{position:absolute;top:-11px;left:26px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(135deg,var(--ember),var(--amber));color:#fff;padding:6px 12px;border-radius:999px}
-.price__v{font-size:clamp(28px,3.4vw,36px);font-weight:650;letter-spacing:-.04em}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.price{border:1px solid var(--line);border-radius:var(--r-lg);padding:34px 28px;background:var(--surface);display:flex;flex-direction:column;gap:17px;position:relative;transition:border-color .3s,transform .3s}
+.price:hover{border-color:var(--line-hi);transform:translateY(-3px)}
+.price--hi{border-color:rgba(62,123,250,.5);background:linear-gradient(180deg,rgba(62,123,250,.1),rgba(255,255,255,.02))}
+.price__tag{position:absolute;top:-12px;left:26px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;padding:6px 12px;border-radius:999px}
+.price h3{font-size:21px}
+.price__v{font-size:clamp(30px,3.6vw,40px);font-weight:640;letter-spacing:-.03em}
 .price__v em{font-style:normal;font-size:14px;color:var(--dim);font-weight:400;letter-spacing:0;margin-right:6px}
-.price ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px;color:var(--muted)}
-.price li{display:flex;gap:11px;align-items:flex-start}
-.price li::before{content:"";width:6px;height:6px;margin-top:8px;flex:none;border-radius:2px;background:var(--amber);opacity:.8}
-.price .term{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--amber);text-transform:uppercase}
+.price ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:11px;font-size:14.5px;color:var(--muted)}
+.price li{display:flex;gap:10px;align-items:flex-start}
+.price li::before{content:"";width:5px;height:5px;margin-top:9px;flex:none;border-radius:2px;background:var(--accent);opacity:.8}
 .price .btn{margin-top:auto}
-.addon{margin-top:16px;border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;background:var(--surface);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+.addon{margin-top:16px;border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;background:var(--surface);display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
 .addon b{font-weight:600}
 .addon span{color:var(--muted);font-size:14.5px}
 
 /* ============================== FAQ ============================== */
 .faq{max-width:840px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;padding:22px 44px 22px 0;position:relative;font-size:17px;font-weight:520;letter-spacing:-.01em;transition:color .2s}
+.faq summary{cursor:pointer;list-style:none;padding:21px 44px 21px 0;position:relative;font-size:16.5px;font-weight:520;letter-spacing:-.01em;transition:color .2s}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:hover{color:var(--amber)}
-.faq summary::after{content:"";position:absolute;right:8px;top:29px;width:9px;height:9px;border-right:1.5px solid var(--amber);border-bottom:1.5px solid var(--amber);transform:rotate(45deg);transition:transform .28s}
+.faq summary:hover{color:var(--accent)}
+.faq summary::after{content:"";position:absolute;right:8px;top:28px;width:9px;height:9px;border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(45deg);transition:transform .28s}
 .faq details[open] summary::after{transform:rotate(-135deg)}
-.faq p{padding:0 44px 24px 0;color:var(--muted);font-size:15.5px}
+.faq p{padding:0 44px 23px 0;color:var(--muted);font-size:15px}
 
 /* ============================== ФИНАЛ ============================== */
-.final{border:1px solid var(--line);border-radius:26px;padding:clamp(36px,5.6vw,72px);background:linear-gradient(155deg,rgba(255,122,26,.16),rgba(194,65,12,.06) 45%,rgba(255,255,255,.02));box-shadow:0 60px 130px -70px var(--glow);text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
-.final h2{max-width:760px}
-.final__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.final{border:1px solid var(--line);border-radius:24px;padding:clamp(34px,5vw,64px);background:linear-gradient(155deg,rgba(62,123,250,.14),rgba(36,85,214,.05) 45%,rgba(255,255,255,.015));text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.final h2{max-width:700px}
+.final__cta{margin-top:4px}
 
 /* ============================== ПОДВАЛ ============================== */
-.ftr{border-top:1px solid var(--line);padding:34px 0;position:relative;z-index:1}
+.ftr{border-top:1px solid var(--line);padding:32px 0;position:relative;z-index:1}
 .ftr__in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
 .ftr__l{display:flex;gap:22px;font-size:14px;color:var(--muted)}
-.ftr__l a:hover{color:var(--amber)}
+.ftr__l a:hover{color:var(--accent)}
 .ftr__m{font-size:13px;color:var(--dim)}
 
 /* ============================== ПОЯВЛЕНИЕ ============================== */
-[data-r]{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 [data-r].is-in{opacity:1;transform:none}
-.hero [data-r]{transform:translateY(18px)}
 
 /* ============================== АДАПТИВ ============================== */
 @media (max-width:1000px){
-  .hero__grid{grid-template-columns:1fr;gap:44px}
+  .hero__grid{grid-template-columns:1fr;gap:40px}
   .bento{grid-template-columns:repeat(2,1fr)}
-  .who{grid-template-columns:1fr;gap:28px}
-  .rail{grid-template-columns:repeat(2,1fr)}
-  .rail__s:nth-child(2n)::after{display:none}
-  .rail__s:nth-child(n+3){padding-top:24px}
   .grid3{grid-template-columns:1fr 1fr}
+  .grid4{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
   .nav,.hdr .btn{display:none}
   .burger{display:flex}
   .bento{grid-template-columns:1fr}
-  .rail{grid-template-columns:1fr}
-  .rail__s::after{display:none!important}
+  .grid2{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr}
   .hero__cta .btn{flex:1 1 100%}
   .ftr__in{flex-direction:column;align-items:flex-start;gap:14px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  [data-r],.bub,.ticket{opacity:1!important;transform:none!important}
-  .ticker__track{animation:none!important}
-  .niche-row{transform:none!important}
-  .niche-row :nth-child(n+6){display:none}
+  [data-r]{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
 
 <body>
-<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="bg-grid" aria-hidden="true"></div>
 
 <!-- ============================== ШАПКА ============================== -->
 <header class="hdr">
@@ -288,8 +267,8 @@ p{margin:0}
       <svg viewBox="0 0 44 52" fill="currentColor" aria-hidden="true"><path d="M4 52V0h9l18 30V0h9v52h-9L13 22v30H4z"/></svg>
       NEXORIA
     </a>
-    <nav class="nav">
-      <a href="#services">Услуги</a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#services">Автоматизация</a>
       <a href="#demo">Демо</a>
       <a href="#process">Процесс</a>
       <a href="#pricing">Цены</a>
@@ -302,7 +281,7 @@ p{margin:0}
   <div class="progress" id="progress"></div>
 
   <div class="mnav" id="mnav">
-    <a href="#services">Услуги</a>
+    <a href="#services">Автоматизация</a>
     <a href="#demo">Демо</a>
     <a href="#process">Процесс</a>
     <a href="#pricing">Цены</a>
@@ -314,206 +293,146 @@ p{margin:0}
 
 <main id="top">
 
-<!-- ============================== ПЕРВЫЙ ЭКРАН ============================== -->
+<!-- ============================== 1. HERO ============================== -->
 <section class="hero">
   <div class="wrap">
     <div class="hero__grid">
       <div class="hero__copy">
-        <div class="hero__dots" aria-hidden="true">
-          <span style="top:2%;left:58%;animation-delay:.2s"></span>
-          <span style="top:96%;left:2%;animation-delay:1.3s"></span>
-          <span style="top:44%;left:96%;animation-delay:2.1s"></span>
-          <span style="top:70%;left:34%;animation-delay:.7s"></span>
-        </div>
-        <span class="label" data-r>Telegram-боты и AI-помощники</span>
-        <h1 data-r>
-          Клиент пишет.
-          <span class="l2">Бот <span class="shimmer">отвечает</span>.</span>
-          <span class="l3">Заявка у вас.</span>
-        </h1>
-        <p class="lead" data-r>Собираем ботов, которые отвечают на частые вопросы, записывают на услугу и передают готовую заявку владельцу в Telegram.</p>
+        <span class="label" data-r>Автоматизация для бизнеса</span>
+        <h1 data-r>Автоматизируем процессы, которые бизнес всё ещё делает <span class="grad-word">вручную</span></h1>
+        <p class="lead" data-r>AI-агенты, Telegram-боты, интеграции с CRM и автоматизация заявок — собираем систему под задачи бизнеса.</p>
         <div class="hero__cta" data-r>
           <!-- << TELEGRAM >> главный CTA -->
-          <a class="btn btn--primary" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Получить бесплатный разбор</a>
+          <a class="btn btn--primary" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить задачу</a>
           <a class="btn btn--ghost" href="#demo">Посмотреть решения</a>
         </div>
         <div class="meta" data-r>
-          <span>первый запуск за 2 дня</span>
-          <span>от 2 900 ₽</span>
-          <span>работаем онлайн</span>
+          <span>AI-агенты</span>
+          <span>Telegram-боты</span>
+          <span>CRM-интеграции</span>
+          <span>API</span>
         </div>
       </div>
 
-      <!-- СИГНАТУРА: панель входящих, сообщения появляются по очереди -->
-      <div class="inbox-wrap" data-r>
-        <div class="inbox" id="inbox" aria-label="Пример диалога: клиент спрашивает, бот отвечает, владельцу приходит заявка">
-          <div class="inbox__bar"><span class="pulse"></span> Входящие · бот на связи</div>
-          <div class="inbox__body">
-            <div class="bub bub--in" data-step="1">Здравствуйте! Сколько стоит замена масла и когда можно записаться?</div>
-            <div class="bub bub--out" data-step="2">От 1 200 ₽ вместе с работой. Свободно сегодня в 15:00 и завтра в 11:00 — что удобнее?</div>
-            <div class="bub bub--in" data-step="3">Давайте завтра в 11</div>
-            <div class="bub bub--out" data-step="4">Записал. Как вас зовут и на какой машине приедете?</div>
-            <div class="ticket" data-step="5">
-              <div class="ticket__h">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M20 6L9 17l-5-5"/></svg>
-                Заявка отправлена владельцу
-              </div>
-              <div class="ticket__r"><span>Услуга</span><b>Замена масла</b></div>
-              <div class="ticket__r"><span>Время</span><b>Завтра, 11:00</b></div>
-              <div class="ticket__r"><span>Клиент</span><b>@client</b></div>
+      <!-- СИГНАТУРА: схема потока данных -->
+      <div class="flow" data-r aria-label="Схема: клиент пишет в Telegram или на сайте, AI-агент обрабатывает обращение, данные передаются в CRM, менеджер получает уведомление">
+        <div class="flow__bar"><span class="pulse"></span> Поток данных</div>
+        <div class="flow__body">
+          <div class="flow__rail" aria-hidden="true"><i></i></div>
+          <div class="flow__step" data-hot="0"><span class="flow__node"></span>
+            <div class="flow__txt"><b>Клиент</b><span>пишет с вопросом или заявкой</span></div>
+          </div>
+          <div class="flow__step" data-hot="1"><span class="flow__node"></span>
+            <div class="flow__txt">
+              <b>Telegram / Сайт</b><span>точка входа обращения</span>
+              <div class="flow__sub"><span class="flow__chip">Telegram</span><span class="flow__chip">Сайт</span></div>
             </div>
+          </div>
+          <div class="flow__step" data-hot="2"><span class="flow__node"></span>
+            <div class="flow__txt"><b>AI-агент</b><span>обрабатывает и квалифицирует</span></div>
+          </div>
+          <div class="flow__step" data-hot="3"><span class="flow__node"></span>
+            <div class="flow__txt"><b>CRM</b><span>лид, сделка, задача создаются автоматически</span></div>
+          </div>
+          <div class="flow__step" data-hot="4"><span class="flow__node"></span>
+            <div class="flow__txt"><b>Менеджер</b><span>получает готовую заявку</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="scroll-cue" data-r>
-      <span>Листайте</span>
-      <span class="scroll-cue__line"></span>
-    </div>
   </div>
 </section>
 
-<!-- ============================== БЕГУЩАЯ СТРОКА ============================== -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span class="ticker__i">Сколько стоит?</span>
-    <span class="ticker__i">Вы работаете в воскресенье?</span>
-    <span class="ticker__i">Можно записаться на завтра?</span>
-    <span class="ticker__i">Где вы находитесь?</span>
-    <span class="ticker__i">Есть свободное время сегодня?</span>
-    <span class="ticker__i">Сколько это займёт?</span>
-    <span class="ticker__i">Скиньте прайс, пожалуйста</span>
-    <span class="ticker__i">Сколько стоит?</span>
-    <span class="ticker__i">Вы работаете в воскресенье?</span>
-    <span class="ticker__i">Можно записаться на завтра?</span>
-    <span class="ticker__i">Где вы находитесь?</span>
-    <span class="ticker__i">Есть свободное время сегодня?</span>
-    <span class="ticker__i">Сколько это займёт?</span>
-    <span class="ticker__i">Скиньте прайс, пожалуйста</span>
-  </div>
-</div>
-
-<!-- ============================== УСЛУГИ ============================== -->
+<!-- ============================== 2. ЧТО АВТОМАТИЗИРУЕМ ============================== -->
 <!-- << УСЛУГИ >> иконка, заголовок и короткое описание — по каждой плитке -->
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sec-head" data-r>
-      <span class="label">Что делаем</span>
-      <h2>Шесть направлений вокруг одной задачи — не терять клиентов из переписки</h2>
+      <span class="label">Что автоматизируем</span>
+      <h2>Не «делаем ботов», а автоматизируем то, что делается вручную</h2>
     </div>
 
     <div class="bento">
       <article class="tile" data-r>
         <div class="tile__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5h16l-6 8v6l-4 2v-8L4 5z"/>
+          </svg>
+        </div>
+        <h3>Продажи</h3>
+        <p>Обработка заявок, квалификация, передача менеджеру.</p>
+        <div class="tile__tags"><span>Telegram</span><span>CRM</span><span>Квалификация</span></div>
+      </article>
+
+      <article class="tile" data-r>
+        <div class="tile__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="5.5" width="16" height="11" rx="3"/>
             <path d="M8 16.5v3.6l4-3.6"/>
-            <path d="M10.3 9.7c0-1 .85-1.7 1.85-1.7.95 0 1.85.65 1.85 1.55 0 .8-.55 1.2-1.15 1.55-.55.32-.85.62-.85 1.15"/>
-            <circle cx="12" cy="13.5" r=".82" fill="currentColor" stroke="none"/>
+            <path d="M9.5 10.8l1.7 1.7 3.3-3.3"/>
           </svg>
         </div>
-        <h3>Ответы на частые вопросы</h3>
-        <p>Цены, адрес, график — сразу и ночью.</p>
+        <h3>Поддержка</h3>
+        <p>AI отвечает на типовые вопросы 24/7.</p>
+        <div class="tile__tags"><span>AI</span><span>FAQ</span><span>24/7</span></div>
       </article>
 
       <article class="tile" data-r>
         <div class="tile__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12.5h4.3l1.6 2.7h4.2l1.6-2.7H20"/>
-            <path d="M6.2 4.5h11.6l2.2 8v5.5A1.5 1.5 0 0 1 18.5 19.5h-13A1.5 1.5 0 0 1 4 18V12.5l2.2-8z"/>
+            <ellipse cx="12" cy="6" rx="7.5" ry="2.8"/>
+            <path d="M4.5 6v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8V6"/>
+            <path d="M4.5 12v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"/>
           </svg>
         </div>
-        <h3>Сбор заявок</h3>
-        <p>Из Telegram и с сайта — в одном месте.</p>
+        <h3>CRM</h3>
+        <p>Лиды, сделки, контакты и задачи создаются автоматически.</p>
+        <div class="tile__tags"><span>Битрикс24</span><span>amoCRM</span><span>Webhooks</span></div>
       </article>
 
       <article class="tile" data-r>
         <div class="tile__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3.5" y="5" width="17" height="15" rx="3"/>
-            <path d="M3.5 9.5h17M8 3v4M16 3v4"/>
-            <circle cx="12" cy="14.7" r="3.3"/>
-            <path d="M12 13.2v1.5l1.1.85"/>
+            <path d="M5 4h10l4 4v12H5V4z"/>
+            <path d="M15 4v4h4"/>
+            <path d="M9 13l2 2 4-4"/>
           </svg>
         </div>
-        <h3>Запись на услугу</h3>
-        <p>Клиент выбирает время, бот напоминает.</p>
+        <h3>Заявки</h3>
+        <p>Telegram, сайт, формы — в одной системе.</p>
+        <div class="tile__tags"><span>Telegram</span><span>Сайт</span><span>Формы</span></div>
       </article>
 
       <article class="tile" data-r>
         <div class="tile__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/>
-            <path d="M3.5 9.5h17M9.5 9.5v10"/>
+            <path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/>
+            <path d="M9 12h6M9 15.5h6M9 8.5h3"/>
           </svg>
         </div>
-        <h3>Таблицы и CRM</h3>
-        <p>Заявки попадают в таблицу без рук.</p>
-      </article>
-
-      <article class="tile" data-r>
-        <div class="tile__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
-            <path d="M12 3.2c.5 3.4 1.15 5.6 2.25 6.9 1.1 1.3 3.1 2.1 5.3 2.6-2.2.5-4.2 1.3-5.3 2.6-1.1 1.3-1.75 3.5-2.25 6.9-.5-3.4-1.15-5.6-2.25-6.9-1.1-1.3-3.1-2.1-5.3-2.6 2.2-.5 4.2-1.3 5.3-2.6 1.1-1.3 1.75-3.5 2.25-6.9z"/>
-          </svg>
-        </div>
-        <h3>AI-помощник</h3>
-        <p>Отвечает по вашим материалам сам.</p>
+        <h3>Документы и данные</h3>
+        <p>AI работает с прайсами и регламентами.</p>
+        <div class="tile__tags"><span>RAG</span><span>Прайсы</span><span>Регламенты</span></div>
       </article>
 
       <article class="tile" data-r>
         <div class="tile__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.8 6.1a3.6 3.6 0 0 0-4.8 4.6L4.6 16.1v3.3h3.3l5.4-5.4a3.6 3.6 0 0 0 4.6-4.8l-2.7 2.7-2.1-.5-.5-2.1 2.7-2.7z"/>
+            <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5"/>
+            <path d="M20 4v4.5h-4.5"/>
+            <path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.5"/>
+            <path d="M4 20v-4.5h4.5"/>
           </svg>
         </div>
-        <h3>Доработка и поддержка</h3>
-        <p>Правим текст, чиним, ведём бота.</p>
+        <h3>Внутренние процессы</h3>
+        <p>Убираем повторяющиеся действия.</p>
+        <div class="tile__tags"><span>API</span><span>n8n</span><span>Автоматизация</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============================== ДЛЯ КОГО ============================== -->
-<section class="sec">
-  <div class="wrap who">
-    <div class="sec-head" style="margin-bottom:0" data-r>
-      <span class="label">Для кого</span>
-      <h2>Там, где клиенты приходят в личку</h2>
-      <p class="quote">Если вам регулярно пишут одни и те же вопросы — это можно автоматизировать.</p>
-    </div>
-
-    <div class="niche-ticker" data-r aria-hidden="true">
-      <div class="niche-row niche-row--a">
-        <span class="tag">Автосервисы</span>
-        <span class="tag">Бьюти-салоны</span>
-        <span class="tag">Ремонт и услуги</span>
-        <span class="tag">Онлайн-школы</span>
-        <span class="tag">Эксперты</span>
-        <span class="tag">Автосервисы</span>
-        <span class="tag">Бьюти-салоны</span>
-        <span class="tag">Ремонт и услуги</span>
-        <span class="tag">Онлайн-школы</span>
-        <span class="tag">Эксперты</span>
-      </div>
-      <div class="niche-row niche-row--b">
-        <span class="tag">Агентства</span>
-        <span class="tag">Клиники</span>
-        <span class="tag">Доставка</span>
-        <span class="tag">Барбершопы</span>
-        <span class="tag">Курьерские службы</span>
-        <span class="tag">Агентства</span>
-        <span class="tag">Клиники</span>
-        <span class="tag">Доставка</span>
-        <span class="tag">Барбершопы</span>
-        <span class="tag">Курьерские службы</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== ДЕМО ============================== -->
+<!-- ============================== 3. ДЕМО ============================== -->
 <section class="sec" id="demo">
   <div class="wrap">
     <div class="sec-head" data-r>
@@ -558,9 +477,9 @@ p{margin:0}
           <div class="m m--in">Форма: имя, телефон, задача</div>
           <div class="m m--out">Новая заявка · сайт</div>
           <div class="m m--out">Иван · нужен расчёт</div>
-          <div class="mini"><span>Записано в таблицу</span></div>
+          <div class="mini"><span>Записано в CRM</span></div>
         </div>
-        <p>Форма отправляет заявку в Telegram и в таблицу — без проверки почты.</p>
+        <p>Форма отправляет заявку в Telegram и в CRM — без проверки почты.</p>
         <!-- << TELEGRAM >> -->
         <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Хочу похожее</a>
       </article>
@@ -568,110 +487,158 @@ p{margin:0}
   </div>
 </section>
 
-<!-- ============================== ПРОЦЕСС ============================== -->
-<section class="sec" id="process">
+<!-- ============================== 4. КАК РАБОТАЕМ ============================== -->
+<section class="sec sec--alt" id="process">
   <div class="wrap">
     <div class="sec-head" data-r>
       <span class="label">Как работаем</span>
-      <h2>От разговора до запуска — четыре шага</h2>
+      <h2>От разбора процесса до запуска — шесть шагов</h2>
     </div>
 
-    <div class="rail">
-      <div class="rail__s" data-r data-rail>
-        <span class="rail__n">01</span>
-        <h3>Разбираем задачу</h3>
-        <p>Смотрим, какие сообщения вам приходят чаще всего и что из этого может закрыть бот.</p>
+    <div class="timeline" data-r>
+      <div class="timeline__line" id="timelineLine"></div>
+
+      <div class="tl-step">
+        <span class="tl-step__n">01</span>
+        <h3>Анализируем процесс</h3>
+        <p>Смотрим, как сейчас происходит работа с заявками и клиентами и где теряется время.</p>
       </div>
-      <div class="rail__s" data-r data-rail>
-        <span class="rail__n">02</span>
-        <h3>Собираем сценарий</h3>
-        <p>Пишем ветки диалога под ваши услуги и цены, согласуем формулировки.</p>
+      <div class="tl-step">
+        <span class="tl-step__n">02</span>
+        <h3>Находим точки автоматизации</h3>
+        <p>Определяем, какие действия дублируются вручную и что имеет смысл автоматизировать в первую очередь.</p>
       </div>
-      <div class="rail__s" data-r data-rail>
-        <span class="rail__n">03</span>
-        <h3>Показываем демо</h3>
-        <p>Вы проходите сценарий сами в Telegram и говорите, что поправить.</p>
+      <div class="tl-step">
+        <span class="tl-step__n">03</span>
+        <h3>Проектируем систему</h3>
+        <p>Продумываем логику: какие сервисы участвуют и как между ними движутся данные.</p>
       </div>
-      <div class="rail__s" data-r data-rail>
-        <span class="rail__n">04</span>
+      <div class="tl-step">
+        <span class="tl-step__n">04</span>
+        <h3>Разрабатываем интеграции</h3>
+        <p>Настраиваем связи между Telegram, сайтом, CRM и другими сервисами.</p>
+      </div>
+      <div class="tl-step">
+        <span class="tl-step__n">05</span>
+        <h3>Тестируем</h3>
+        <p>Проверяем сценарии на реальных данных до запуска в работу.</p>
+      </div>
+      <div class="tl-step">
+        <span class="tl-step__n">06</span>
         <h3>Запускаем</h3>
-        <p>Подключаем к вашему аккаунту, настраиваем уведомления, показываем, как менять тексты.</p>
+        <p>Подключаем к вашим аккаунтам и показываем, как всё работает и как это менять.</p>
       </div>
     </div>
 
     <div class="note" data-r>
       <span class="pulse"></span>
-      <span>Первое простое решение — <b>за 2 дня</b>. Нас двое, берём ограниченное число проектов, поэтому вникаем в каждый.</span>
+      <span>Берём ограниченное число проектов одновременно — вникаем в каждый, а не отдаём шаблон.</span>
     </div>
   </div>
 </section>
 
-<!-- ============================== ЦЕНЫ ============================== -->
-<!-- << ЦЕНЫ >> суммы, сроки и состав пакетов — здесь -->
-<section class="sec" id="pricing">
+<!-- ============================== 5. ПОЧЕМУ NEXORIA ============================== -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="label">Почему NEXORIA</span>
+      <h2>Без банальностей про «индивидуальный подход»</h2>
+    </div>
+
+    <div class="grid2">
+      <article class="why" data-r>
+        <span class="why__n">01</span>
+        <h3>Под конкретный процесс</h3>
+        <p>Не продаём коробку, если она не подходит.</p>
+      </article>
+      <article class="why" data-r>
+        <span class="why__n">02</span>
+        <h3>Интегрируем существующее</h3>
+        <p>Не заставляем менять весь стек.</p>
+      </article>
+      <article class="why" data-r>
+        <span class="why__n">03</span>
+        <h3>Работаем напрямую</h3>
+        <p>Без менеджеров и посредников.</p>
+      </article>
+      <article class="why" data-r>
+        <span class="why__n">04</span>
+        <h3>Масштабируется</h3>
+        <p>Начинаем с одной автоматизации, соединяем остальные процессы.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 6. ЦЕНЫ ============================== -->
+<!-- << ЦЕНЫ >> суммы и состав пакетов — здесь -->
+<section class="sec sec--alt" id="pricing">
   <div class="wrap">
     <div class="sec-head" data-r>
       <span class="label">Цены</span>
-      <h2>Три пакета и ориентиры по срокам</h2>
+      <h2>Четыре тарифа — от точечной задачи до системы</h2>
       <p class="lead">Точную стоимость называем после разбора задачи — до начала работы, без сюрпризов в процессе.</p>
     </div>
 
-    <div class="grid3">
+    <div class="grid4">
       <article class="price" data-r>
-        <h3>Бот Старт</h3>
-        <div class="price__v"><em>от</em>2 900 ₽</div>
+        <h3>Быстрый запуск</h3>
+        <div class="price__v"><em>от</em>3 900 ₽</div>
         <ul>
-          <li>Ответы на частые вопросы</li>
-          <li>Меню на кнопках</li>
-          <li>Сбор контакта клиента</li>
-          <li>Заявка приходит вам в Telegram</li>
+          <li>Одна автоматизация под конкретную задачу</li>
+          <li>Настройка через Telegram или сайт</li>
+          <li>Понятная логика без лишнего</li>
         </ul>
-        <div class="term">запуск за 2 дня</div>
         <!-- << TELEGRAM >> -->
         <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить</a>
       </article>
 
       <article class="price price--hi" data-r>
         <span class="price__tag">Популярное</span>
-        <h3>Бот для заявок</h3>
+        <h3>Заявки и продажи</h3>
         <div class="price__v"><em>от</em>9 900 ₽</div>
         <ul>
-          <li>Индивидуальный сценарий диалога</li>
-          <li>Квалификация клиента</li>
-          <li>Запись на услугу</li>
-          <li>Таблица заявок</li>
-          <li>Уведомления владельцу</li>
+          <li>Сценарий диалога и квалификация</li>
+          <li>Заявки собираются в одну таблицу</li>
+          <li>Уведомления менеджеру</li>
         </ul>
-        <div class="term">запуск за 5 дней</div>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--primary btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Получить разбор</a>
+        <a class="btn btn--primary btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Рассчитать решение</a>
       </article>
 
       <article class="price" data-r>
-        <h3>Автоматизация бизнеса</h3>
+        <h3>Система</h3>
         <div class="price__v"><em>от</em>19 900 ₽</div>
         <ul>
-          <li>Связка нескольких сервисов</li>
-          <li>AI-помощник по вашим материалам</li>
-          <li>Настройка под процессы бизнеса</li>
-          <li>Передача данных между системами</li>
+          <li>Несколько связанных процессов</li>
+          <li>Интеграция с CRM</li>
+          <li>Передача данных между сервисами</li>
         </ul>
-        <div class="term">срок после разбора</div>
         <!-- << TELEGRAM >> -->
         <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить</a>
+      </article>
+
+      <article class="price" data-r>
+        <h3>Индивидуальное решение</h3>
+        <div class="price__v">По расчёту</div>
+        <ul>
+          <li>CRM + AI + нужные интеграции</li>
+          <li>Архитектура под процессы бизнеса</li>
+          <li>Расчёт после разбора задачи</li>
+        </ul>
+        <!-- << TELEGRAM >> -->
+        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Рассчитать решение</a>
       </article>
     </div>
 
     <div class="addon" data-r>
-      <b>Доработка и поддержка</b>
-      <span>правки текстов, новые сценарии, ведение готового бота — обсуждаем отдельно под объём.</span>
+      <b>Отдельно</b>
+      <span>подписки сторонних сервисов и расходы на AI оплачиваются отдельно, если нужны для проекта.</span>
     </div>
-
-    <p class="fine" style="margin-top:14px" data-r>Подписки сторонних сервисов и расходы на AI оплачиваются отдельно, если нужны для проекта.</p>
   </div>
 </section>
 
-<!-- ============================== FAQ ============================== -->
+<!-- ============================== 7. FAQ ============================== -->
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="sec-head" data-r>
@@ -701,25 +668,27 @@ p{margin:0}
         <p>Разберём процесс и предложим решение под него. Если задача выходит за рамки того, что сделаем качественно и в срок, скажем сразу, а не в середине работы.</p>
       </details>
       <details>
+        <summary>Работаете с нашей CRM?</summary>
+        <p>Разберём, какие у неё есть API и вебхуки, и скажем прямо, что реально подключить, а что нет.</p>
+      </details>
+      <details>
         <summary>Кто вы?</summary>
-        <p>Двое разработчиков, делаем автоматизации для малого бизнеса. Берём ограниченное число проектов одновременно, чтобы вникать в каждый, а не отдавать шаблон.</p>
+        <p>Команда разработчиков, делаем автоматизации для бизнеса. Берём ограниченное число проектов одновременно, чтобы вникать в каждый, а не отдавать шаблон.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============================== ФИНАЛ ============================== -->
+<!-- ============================== 8. ФИНАЛ ============================== -->
 <section class="sec" id="contact">
   <div class="wrap">
     <div class="final" data-r>
-      <span class="label">Бесплатный разбор</span>
-      <h2>Расскажите, какие заявки вы теряете — предложим простой первый шаг</h2>
-      <p class="lead" style="max-width:580px">Напишите пару предложений о своём бизнесе. Ответим, что здесь можно автоматизировать и с чего дешевле начать. Если автоматизация не нужна — скажем и об этом.</p>
+      <span class="label">Начать</span>
+      <h2>Есть процесс, который хочется автоматизировать?</h2>
+      <p class="lead" style="max-width:560px">Расскажите в двух словах, что отнимает время. Ответим, что здесь можно автоматизировать и с чего начать.</p>
       <div class="final__cta">
         <!-- << TELEGRAM >> -->
         <a class="btn btn--primary btn--xl" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Написать в Telegram</a>
-        <!-- << INSTAGRAM >> -->
-        <a class="btn btn--ghost btn--xl" href="https://instagram.com/nexoria_lab" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
   </div>
@@ -779,6 +748,7 @@ p{margin:0}
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 
+  /* появление секций при скролле */
   var items = document.querySelectorAll('[data-r]');
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(function(el){ el.classList.add('is-in'); });
@@ -789,42 +759,44 @@ p{margin:0}
       });
     }, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
     items.forEach(function(el, i){
-      el.style.transitionDelay = ((i % 4) * 80) + 'ms';
+      el.style.transitionDelay = ((i % 4) * 70) + 'ms';
       io.observe(el);
     });
   }
 
-  var rails = document.querySelectorAll('[data-rail]');
-  if (reduce || !('IntersectionObserver' in window)) {
-    rails.forEach(function(el){ el.classList.add('is-in'); });
-  } else {
-    var ioRail = new IntersectionObserver(function(en){
-      en.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add('is-in'); ioRail.unobserve(e.target); }
-      });
-    }, { threshold:0.4 });
-    rails.forEach(function(el){ ioRail.observe(el); });
-  }
-
-  var steps = document.querySelectorAll('#inbox [data-step]');
-  if (reduce) {
-    steps.forEach(function(el){ el.classList.add('play'); });
-  } else {
-    var started = false;
-    var ioBox = new IntersectionObserver(function(en){
-      en.forEach(function(e){
-        if (e.isIntersecting && !started){
-          started = true;
-          steps.forEach(function(el, i){
-            setTimeout(function(){ el.classList.add('play'); }, 420 + i * 620);
+  /* подсветка узлов hero-схемы по очереди */
+  var flowSteps = document.querySelectorAll('.flow__step');
+  if (flowSteps.length){
+    if (reduce){
+      flowSteps[0].classList.add('is-hot');
+    } else {
+      var hotI = 0;
+      var runHot = function(){
+        flowSteps.forEach(function(s){ s.classList.remove('is-hot'); });
+        flowSteps[hotI].classList.add('is-hot');
+        hotI = (hotI + 1) % flowSteps.length;
+      };
+      var flowBox = document.querySelector('.flow');
+      var flowStarted = false;
+      if ('IntersectionObserver' in window && flowBox){
+        var ioFlow = new IntersectionObserver(function(en){
+          en.forEach(function(e){
+            if (e.isIntersecting && !flowStarted){
+              flowStarted = true;
+              runHot();
+              setInterval(runHot, 1200);
+            }
           });
-          ioBox.disconnect();
-        }
-      });
-    }, { threshold:0.3 });
-    if (steps.length) ioBox.observe(document.getElementById('inbox'));
+        }, { threshold:0.3 });
+        ioFlow.observe(flowBox);
+      } else {
+        runHot();
+        setInterval(runHot, 1200);
+      }
+    }
   }
 
+  /* активный пункт навигации по секции в вьюпорте */
   var links = document.querySelectorAll('.nav a');
   var sections = [];
   links.forEach(function(l){
@@ -843,6 +815,7 @@ p{margin:0}
     sections.forEach(function(x){ ioNav.observe(x.sec); });
   }
 
+  /* курсор-подсветка на плитках услуг */
   if (!reduce && window.matchMedia('(hover: hover)').matches){
     document.querySelectorAll('.tile').forEach(function(t){
       t.addEventListener('mousemove', function(e){
@@ -852,6 +825,25 @@ p{margin:0}
       });
     });
   }
+
+  /* заполнение линии таймлайна при скролле */
+  var timelineLine = document.getElementById('timelineLine');
+  var timelineWrap = document.querySelector('.timeline');
+  if (timelineLine && timelineWrap){
+    var updateTimeline = function(){
+      var rect = timelineWrap.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var start = vh * 0.85;
+      var total = rect.height + vh * 0.35;
+      var progressed = start - rect.top;
+      var pct = Math.max(0, Math.min(1, progressed / total));
+      timelineLine.style.setProperty('--fill', (pct * 100) + '%');
+    };
+    window.addEventListener('scroll', updateTimeline, { passive:true });
+    window.addEventListener('resize', updateTimeline);
+    updateTimeline();
+  }
+
 })();
 </script>
 </body>
