@@ -16,11 +16,11 @@
        5) Услуги, иконки и теги на плитках — секция  << УСЛУГИ >>.
      ========================================================================= -->
 
-<title>NEXORIA — автоматизация бизнеса: AI-агенты, Telegram-боты, CRM-интеграции</title>
-<meta name="description" content="Автоматизируем процессы, которые бизнес всё ещё делает вручную: AI-агенты, Telegram-боты, интеграции с CRM, автоворонки и внутренняя автоматизация. Собираем систему под задачи бизнеса.">
+<title>NEXORIA — автоматизация заявок и процессов для бизнеса</title>
+<meta name="description" content="Автоматизируем работу с заявками и рутинные процессы, чтобы бизнес терял меньше клиентов и тратил меньше времени на ручную работу. Заявки с сайта и из Telegram в одном месте, ответы клиентам сразу, данные в CRM.">
 <meta name="theme-color" content="#0A0A0B">
-<meta property="og:title" content="NEXORIA — автоматизация бизнеса">
-<meta property="og:description" content="AI-агенты, Telegram-боты, интеграции с CRM и автоматизация заявок — собираем систему под задачи бизнеса.">
+<meta property="og:title" content="NEXORIA — автоматизация заявок и процессов">
+<meta property="og:description" content="Заявки не теряются, клиент получает ответ сразу, менеджер — готовую заявку. Автоматизируем работу с обращениями и рутину.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
@@ -155,6 +155,7 @@ p{margin:0}
 .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,64px);align-items:center;position:relative;z-index:1}
 .hero__copy{display:flex;flex-direction:column;gap:26px;max-width:610px}
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero__copy .fine{margin-top:-14px;max-width:520px}
 .meta{display:flex;flex-wrap:wrap;gap:10px 20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);text-transform:uppercase}
 .meta span{display:flex;align-items:center;gap:8px}
 .meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 8px var(--accent-glow)}
@@ -256,9 +257,12 @@ p{margin:0}
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
   animation:spinAng 7s linear infinite}
 @keyframes spinAng{to{--ang:360deg}}
-.price__tag{position:absolute;top:-12px;left:26px;z-index:2;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-  background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;padding:6px 13px;border-radius:999px;box-shadow:0 8px 20px -8px var(--accent-glow)}
-.price h3{font-size:21px}
+.price__tag{position:absolute;top:-14px;left:24px;z-index:2;display:inline-flex;align-items:center;
+  font-family:var(--font);font-size:13px;font-weight:500;letter-spacing:-.01em;text-transform:none;white-space:nowrap;
+  padding:5px 14px;border-radius:999px;color:var(--accent-3);
+  background-color:var(--bg);background-image:linear-gradient(180deg,rgba(62,123,250,.22),rgba(62,123,250,.08));
+  border:1px solid rgba(62,123,250,.4)}
+.price h3{font-size:21px;min-height:2.6em}
 .price__v{font-size:clamp(30px,3.6vw,40px);font-weight:600;letter-spacing:-.035em;line-height:1.1;white-space:nowrap}
 .price__v--text{font-size:clamp(24px,2.5vw,30px)}
 .price__v em{font-style:normal;font-size:14px;color:var(--dim);font-weight:400;letter-spacing:0;margin-right:6px}
@@ -325,6 +329,41 @@ p{margin:0}
   transition-delay:var(--d,0ms)}
 [data-r].is-in{opacity:1;transform:none;filter:none}
 
+/* ============================== КЕЙСЫ: ПРОБЛЕМА / РЕШЕНИЕ / РЕЗУЛЬТАТ ============================== */
+.case__rows{display:flex;flex-direction:column;gap:13px}
+.case__row{display:flex;flex-direction:column;gap:3px}
+.case__row b{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:color .35s}
+.case__row span{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.case__row--res{padding-top:12px;border-top:1px solid var(--line)}
+.case__row--res b{color:var(--accent)}
+.case__row--res span{color:var(--fg)}
+.card:hover .case__row b{color:var(--muted)}
+.card:hover .case__row--res b{color:var(--accent)}
+
+/* ============================== ИНСТРУМЕНТЫ (второстепенный блок) ============================== */
+.sec--tight{padding:clamp(34px,4vw,54px) 0}
+.tech{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);padding:clamp(24px,3vw,34px);
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,44px);align-items:start}
+.tech__head{display:flex;flex-direction:column;gap:12px}
+.tech__head h3{font-size:20px}
+.tech__head .fine{max-width:380px}
+.tech__lists{display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0;align-self:center}
+.tech__row{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.tech__track{display:flex;flex-wrap:nowrap;gap:8px;width:max-content;padding:2px 0;
+  animation:marquee 34s linear infinite;will-change:transform}
+.tech__row--rev .tech__track{animation-duration:42s;animation-direction:reverse}
+@keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-100% / var(--copies,1)),0,0)}}
+.tech__row:hover .tech__track{animation-play-state:paused}
+.tech__track span{flex:none;font-family:var(--mono);font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.03);
+  border:1px solid var(--line-hi);border-radius:8px;padding:7px 12px;white-space:nowrap;
+  transition:border-color .35s var(--ease),color .35s var(--ease),background .35s var(--ease)}
+.tech__track span:hover{color:#B9C6DC;border-color:rgba(62,123,250,.45);background:var(--accent-soft)}
+@media (max-width:860px){.tech{grid-template-columns:1fr}.tech__head .fine{max-width:none}
+  .tech__row{-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}}
+
 /* ============================== АДАПТИВ ============================== */
 @media (max-width:1000px){
   .hero__grid{grid-template-columns:1fr;gap:44px}
@@ -351,6 +390,8 @@ p{margin:0}
   *{animation:none!important;transition:none!important}
   [data-r]{opacity:1!important;transform:none!important;filter:none!important}
   .w__i{transform:none!important}
+  .tech__row{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .tech__track{flex-wrap:wrap;width:auto}
   .label::before{width:20px!important}
   .totop{transition:none}
 }
@@ -371,7 +412,7 @@ p{margin:0}
     </a>
     <nav class="nav" aria-label="Основная навигация">
       <a href="#services"><span>Автоматизация</span></a>
-      <a href="#demo"><span>Демо</span></a>
+      <a href="#cases"><span>Примеры</span></a>
       <a href="#process"><span>Процесс</span></a>
       <a href="#pricing"><span>Цены</span></a>
       <a href="#faq"><span>Вопросы</span></a>
@@ -384,7 +425,7 @@ p{margin:0}
 
   <div class="mnav" id="mnav">
     <a href="#services">Автоматизация</a>
-    <a href="#demo">Демо</a>
+    <a href="#cases">Примеры</a>
     <a href="#process">Процесс</a>
     <a href="#pricing">Цены</a>
     <a href="#faq">Вопросы</a>
@@ -400,44 +441,44 @@ p{margin:0}
   <div class="wrap">
     <div class="hero__grid">
       <div class="hero__copy" data-stagger>
-        <span class="pill-note" data-r><i class="pill-note__dot" aria-hidden="true"></i>Первая консультация — бесплатно</span>
-        <h1 data-split>Автоматизируем процессы, которые бизнес всё ещё делает <span class="grad-word">вручную</span></h1>
-        <p class="lead" data-r>AI-агенты, Telegram-боты, интеграции с CRM и автоматизация заявок — собираем систему под задачи бизнеса.</p>
+        <span class="pill-note" data-r><i class="pill-note__dot" aria-hidden="true"></i>Разбор задачи и оценка — бесплатно</span>
+        <h1 data-split>Автоматизируем заявки и рутину, чтобы бизнес терял меньше <span class="grad-word">клиентов</span></h1>
+        <p class="lead" data-r>Обращения с сайта, из Telegram и мессенджеров приходят в одно место, клиент получает ответ сразу, а менеджер — готовую заявку. Меньше ручной работы, меньше упущенных клиентов.</p>
         <div class="hero__cta" data-r>
           <!-- << TELEGRAM >> главный CTA -->
-          <a class="btn btn--primary" data-magnetic href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить задачу</a>
-          <a class="btn btn--ghost" data-magnetic href="#demo">Посмотреть решения</a>
+          <a class="btn btn--primary" data-magnetic href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Рассказать, что автоматизировать</a>
+          <a class="btn btn--ghost" data-magnetic href="#cases">Посмотреть примеры</a>
         </div>
+        <p class="fine" data-r>Напишите в Telegram, что отнимает время, — предложим решение и оценим стоимость.</p>
         <div class="meta" data-r>
-          <span>AI-агенты</span>
-          <span>Telegram-боты</span>
-          <span>CRM-интеграции</span>
-          <span>API</span>
+          <span>Заявки не теряются</span>
+          <span>Ответ клиенту сразу</span>
+          <span>Запуск от 5 дней</span>
         </div>
       </div>
 
-      <!-- СИГНАТУРА: схема потока данных -->
-      <div class="flow" id="heroFlow" data-r aria-label="Схема: клиент пишет в Telegram или на сайте, AI-агент обрабатывает обращение, данные передаются в CRM, менеджер получает уведомление">
-        <div class="flow__bar"><span class="pulse"></span> Поток данных</div>
+      <!-- СИГНАТУРА: схема пути заявки -->
+      <div class="flow" id="heroFlow" data-r aria-label="Схема: клиент пишет в Telegram или на сайте, обращение обрабатывается автоматически, заявка попадает в CRM, менеджер получает готовую заявку">
+        <div class="flow__bar"><span class="pulse"></span> Путь заявки</div>
         <div class="flow__body">
           <div class="flow__rail" aria-hidden="true"><i></i></div>
           <div class="flow__step"><span class="flow__node"></span>
-            <div class="flow__txt"><b>Клиент</b><span>пишет с вопросом или заявкой</span></div>
+            <div class="flow__txt"><b>Клиент</b><span>задаёт вопрос или оставляет заявку</span></div>
           </div>
           <div class="flow__step"><span class="flow__node"></span>
             <div class="flow__txt">
-              <b>Telegram / Сайт</b><span>точка входа обращения</span>
+              <b>Telegram или сайт</b><span>любая точка обращения — в одном месте</span>
               <div class="flow__sub"><span class="flow__chip">Telegram</span><span class="flow__chip">Сайт</span></div>
             </div>
           </div>
           <div class="flow__step"><span class="flow__node"></span>
-            <div class="flow__txt"><b>AI-агент</b><span>обрабатывает и квалифицирует</span></div>
+            <div class="flow__txt"><b>Ответ без ожидания</b><span>клиент сразу получает ответ и уточняющие вопросы</span></div>
           </div>
           <div class="flow__step"><span class="flow__node"></span>
-            <div class="flow__txt"><b>CRM</b><span>лид, сделка, задача создаются автоматически</span></div>
+            <div class="flow__txt"><b>Заявка в вашей системе</b><span>карточка клиента и задача создаются сами</span></div>
           </div>
           <div class="flow__step"><span class="flow__node"></span>
-            <div class="flow__txt"><b>Менеджер</b><span>получает готовую заявку</span></div>
+            <div class="flow__txt"><b>Менеджер</b><span>берёт в работу готовую заявку с деталями</span></div>
           </div>
         </div>
       </div>
@@ -451,7 +492,8 @@ p{margin:0}
   <div class="wrap">
     <div class="sec-head" data-r>
       <span class="label">Что автоматизируем</span>
-      <h2 data-split>Не «делаем ботов», а автоматизируем то, что делается вручную</h2>
+      <h2 data-split>Убираем ручную работу там, где бизнес теряет время и клиентов</h2>
+      <p class="lead">Начинаем с заявок — это то место, где деньги теряются быстрее всего. Дальше подключаем остальные процессы.</p>
     </div>
 
     <div class="bento" data-stagger>
@@ -461,9 +503,9 @@ p{margin:0}
             <path d="M4 5h16l-6 8v6l-4 2v-8L4 5z"/>
           </svg>
         </div>
-        <h3>Продажи</h3>
-        <p>Обработка заявок, квалификация, передача менеджеру.</p>
-        <div class="tile__tags"><span>Telegram</span><span>CRM</span><span>Квалификация</span></div>
+        <h3>Приём заявок</h3>
+        <p>Обращения с сайта, из Telegram и мессенджеров собираются в одном месте. Ни одно не остаётся без ответа.</p>
+        <div class="tile__tags"><span>Telegram</span><span>Сайт</span><span>Уведомления</span></div>
       </article>
 
       <article class="card tile" data-r>
@@ -474,9 +516,23 @@ p{margin:0}
             <path d="M9.5 10.8l1.7 1.7 3.3-3.3"/>
           </svg>
         </div>
-        <h3>Поддержка</h3>
-        <p>AI отвечает на типовые вопросы 24/7.</p>
-        <div class="tile__tags"><span>AI</span><span>FAQ</span><span>24/7</span></div>
+        <h3>Ответы клиентам</h3>
+        <p>Вопросы про цены, услуги и график закрываются автоматически — ночью, в выходные и в час пик.</p>
+        <div class="tile__tags"><span>Круглосуточно</span><span>По вашим ценам</span></div>
+      </article>
+
+      <article class="card tile" data-r>
+        <div class="tile__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5"/>
+            <path d="M20 4v4.5h-4.5"/>
+            <path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.5"/>
+            <path d="M4 20v-4.5h4.5"/>
+          </svg>
+        </div>
+        <h3>Продажи</h3>
+        <p>Уточняем у клиента, что ему нужно, и передаём менеджеру заявку с деталями, а не просто «перезвоните».</p>
+        <div class="tile__tags"><span>Квалификация</span><span>Передача менеджеру</span></div>
       </article>
 
       <article class="card tile" data-r>
@@ -487,9 +543,9 @@ p{margin:0}
             <path d="M4.5 12v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"/>
           </svg>
         </div>
-        <h3>CRM</h3>
-        <p>Лиды, сделки, контакты и задачи создаются автоматически.</p>
-        <div class="tile__tags"><span>Битрикс24</span><span>amoCRM</span><span>Webhooks</span></div>
+        <h3>Работа с CRM</h3>
+        <p>Клиенты, сделки и задачи заводятся сами. Менеджеру не нужно ничего переносить руками.</p>
+        <div class="tile__tags"><span>Битрикс24</span><span>amoCRM</span><span>Таблицы</span></div>
       </article>
 
       <article class="card tile" data-r>
@@ -502,8 +558,8 @@ p{margin:0}
             <path d="M8.5 20.5h7"/>
           </svg>
         </div>
-        <h3>Сайт с приёмом заявок</h3>
-        <p>Страница услуг и цен, заявка сразу уходит в Telegram и CRM.</p>
+        <h3>Сайт, который собирает заявки</h3>
+        <p>Страница с услугами и ценами: заявка сразу уходит в Telegram и в вашу систему.</p>
         <div class="tile__tags"><span>Лендинг</span><span>Форма</span><span>Telegram</span></div>
       </article>
 
@@ -514,79 +570,83 @@ p{margin:0}
             <path d="M9 12h6M9 15.5h6M9 8.5h3"/>
           </svg>
         </div>
-        <h3>Документы и данные</h3>
-        <p>AI работает с прайсами и регламентами.</p>
-        <div class="tile__tags"><span>RAG</span><span>Прайсы</span><span>Регламенты</span></div>
-      </article>
-
-      <article class="card tile" data-r>
-        <div class="tile__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5"/>
-            <path d="M20 4v4.5h-4.5"/>
-            <path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.5"/>
-            <path d="M4 20v-4.5h4.5"/>
-          </svg>
-        </div>
-        <h3>Внутренние процессы</h3>
-        <p>Убираем повторяющиеся действия.</p>
-        <div class="tile__tags"><span>API</span><span>n8n</span><span>Автоматизация</span></div>
+        <h3>Внутренняя рутина</h3>
+        <p>Отчёты, напоминания, документы и передача данных между сервисами — без ручного копирования.</p>
+        <div class="tile__tags"><span>Отчёты</span><span>Напоминания</span><span>Документы</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============================== 3. ДЕМО ============================== -->
-<section class="sec sec--alt" id="demo">
+<!-- ============================== 3. ПРИМЕРЫ РЕШЕНИЙ ============================== -->
+<!-- << КЕЙСЫ >> проблема → решение → результат по каждой карточке -->
+<section class="sec sec--alt" id="cases">
   <div class="wrap">
     <div class="sec-head" data-r>
-      <span class="label">Демо-решения</span>
-      <h2 data-split>Что можно потрогать до оплаты</h2>
-      <p class="lead">Это наши демо, а не клиентские проекты. Собраны, чтобы вы прошли сценарий сами и поняли, как это будет работать у вас.</p>
+      <span class="label">Примеры решений</span>
+      <h2 data-split>Как это работает в бизнесе</h2>
+      <p class="lead">Три сценария из практики: что мешало бизнесу, что мы сделали и что он получает в итоге. Под вашу задачу решение собирается так же — от процесса, а не от шаблона.</p>
     </div>
 
     <div class="grid3" data-stagger>
       <article class="card demo" data-r>
-        <span class="chip">Демо</span>
-        <h3>Бот записи на услугу</h3>
+        <span class="chip">Услуги и запись</span>
+        <h3>Запись клиентов без ручной переписки</h3>
         <div class="screen" aria-hidden="true">
           <div class="m m--in">Хочу записаться</div>
           <div class="m m--out">Выберите услугу:</div>
           <div class="mini"><span>Стрижка</span><span>Окрашивание</span></div>
           <div class="m m--out">Свободно: сегодня 15:00</div>
         </div>
-        <p>Выбор услуги и времени, запись и напоминание клиенту.</p>
+        <div class="case__rows">
+          <div class="case__row"><b>Проблема</b><span>Администратор весь день отвечает на одни и те же вопросы и ведёт запись вручную. Часть клиентов не дожидается ответа и уходит.</span></div>
+          <div class="case__row"><b>Решение</b><span>Бот показывает услуги и свободное время, записывает клиента и напоминает о визите заранее.</span></div>
+          <div class="case__row case__row--res"><b>Результат</b><span>Запись идёт круглосуточно, меньше пропущенных визитов, администратор занят клиентами, а не перепиской.</span></div>
+        </div>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Хочу похожее</a>
+        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить похожую задачу</a>
       </article>
 
       <article class="card demo" data-r>
-        <span class="chip">Демо</span>
-        <h3>Помощник: вопросы и заявки</h3>
+        <span class="chip">Поддержка и продажи</span>
+        <h3>Ответы клиентам и заявки без менеджера</h3>
         <div class="screen" aria-hidden="true">
           <div class="m m--in">Работаете в воскресенье?</div>
           <div class="m m--out">Да, с 10:00 до 18:00.</div>
           <div class="m m--out">Оставить заявку на удобное время?</div>
           <div class="mini"><span>Да</span><span>Другой вопрос</span></div>
         </div>
-        <p>Отвечает по вашим материалам и переводит разговор в заявку.</p>
+        <div class="case__rows">
+          <div class="case__row"><b>Проблема</b><span>Клиенты пишут в нерабочее время, вопросы повторяются, а заявки теряются в переписке между чатами.</span></div>
+          <div class="case__row"><b>Решение</b><span>Помощник отвечает по вашим ценам и условиям, а когда клиент готов — собирает заявку и отправляет менеджеру.</span></div>
+          <div class="case__row case__row--res"><b>Результат</b><span>Клиент получает ответ сразу, менеджер — заявку с деталями и контактом вместо короткого «интересует».</span></div>
+        </div>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Хочу похожее</a>
+        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить похожую задачу</a>
       </article>
 
       <article class="card demo" data-r>
-        <span class="chip">Демо</span>
-        <h3>Заявка с сайта в Telegram</h3>
+        <span class="chip">Заявки с сайта</span>
+        <h3>Заявка с сайта сразу попадает в работу</h3>
         <div class="screen" aria-hidden="true">
           <div class="m m--in">Форма: имя, телефон, задача</div>
           <div class="m m--out">Новая заявка · сайт</div>
           <div class="m m--out">Иван · нужен расчёт</div>
           <div class="mini"><span>Записано в CRM</span></div>
         </div>
-        <p>Форма отправляет заявку в Telegram и в CRM — без проверки почты.</p>
+        <div class="case__rows">
+          <div class="case__row"><b>Проблема</b><span>Заявки с сайта приходят на почту, их замечают через несколько часов и переносят в таблицу руками.</span></div>
+          <div class="case__row"><b>Решение</b><span>Форма отправляет заявку в Telegram и в CRM: менеджер получает уведомление, задача создаётся автоматически.</span></div>
+          <div class="case__row case__row--res"><b>Результат</b><span>Первый контакт с клиентом — в течение минут, ничего не теряется, все данные в одном месте.</span></div>
+        </div>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Хочу похожее</a>
+        <a class="btn btn--ghost btn--sm btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить похожую задачу</a>
       </article>
+    </div>
+
+    <div class="note" data-r>
+      <span class="pulse"></span>
+      <span>Это типовые сценарии, а не коробочные продукты: под ваш процесс решение собирается отдельно.</span>
     </div>
   </div>
 </section>
@@ -604,33 +664,33 @@ p{margin:0}
 
       <div class="tl-step">
         <span class="tl-step__n">01</span>
-        <h3>Анализируем процесс</h3>
-        <p>Смотрим, как сейчас происходит работа с заявками и клиентами и где теряется время.</p>
+        <h3>Разбираем, как всё устроено сейчас</h3>
+        <p>Смотрим, как к вам приходят клиенты, что с заявками происходит дальше и где теряется время.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step__n">02</span>
-        <h3>Находим точки автоматизации</h3>
-        <p>Определяем, какие действия дублируются вручную и что имеет смысл автоматизировать в первую очередь.</p>
+        <h3>Показываем, что можно автоматизировать</h3>
+        <p>Говорим, что даст результат в первую очередь, а что трогать пока не стоит. Считаем стоимость до начала работы.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step__n">03</span>
-        <h3>Проектируем систему</h3>
-        <p>Продумываем логику: какие сервисы участвуют и как между ними движутся данные.</p>
+        <h3>Продумываем решение</h3>
+        <p>Описываем понятным языком, как будет проходить путь клиента и что произойдёт на каждом шаге.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step__n">04</span>
-        <h3>Разрабатываем интеграции</h3>
-        <p>Настраиваем связи между Telegram, сайтом, CRM и другими сервисами.</p>
+        <h3>Собираем и связываем сервисы</h3>
+        <p>Соединяем Telegram, сайт, CRM и другие сервисы, которыми вы уже пользуетесь.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step__n">05</span>
-        <h3>Тестируем</h3>
-        <p>Проверяем сценарии на реальных данных до запуска в работу.</p>
+        <h3>Проверяем на реальных сценариях</h3>
+        <p>Проходим путь клиента сами и правим всё, что работает не так, до запуска.</p>
       </div>
       <div class="tl-step">
         <span class="tl-step__n">06</span>
-        <h3>Запускаем</h3>
-        <p>Подключаем к вашим аккаунтам и показываем, как всё работает и как это менять.</p>
+        <h3>Запускаем и передаём вам</h3>
+        <p>Подключаем к вашим аккаунтам и показываем, как всё работает и как менять тексты и условия самим.</p>
       </div>
     </div>
 
@@ -652,87 +712,124 @@ p{margin:0}
     <div class="grid2" data-stagger>
       <article class="card why" data-r>
         <span class="why__n">01</span>
-        <h3>Под конкретный процесс</h3>
-        <p>Не продаём коробку, если она не подходит.</p>
+        <h3>Сначала процесс, потом решение</h3>
+        <p>Разбираемся, как устроена работа, и только потом предлагаем. Не продаём коробку, если она вам не подходит.</p>
       </article>
       <article class="card why" data-r>
         <span class="why__n">02</span>
-        <h3>Интегрируем существующее</h3>
-        <p>Не заставляем менять весь стек.</p>
+        <h3>Работаем с тем, что уже есть</h3>
+        <p>Подключаемся к вашей CRM, таблицам и сервисам. Менять весь рабочий стек не придётся.</p>
       </article>
       <article class="card why" data-r>
         <span class="why__n">03</span>
-        <h3>Работаем напрямую</h3>
-        <p>Без менеджеров и посредников.</p>
+        <h3>Общаетесь с теми, кто делает</h3>
+        <p>Без менеджеров и посредников: задачу обсуждаете напрямую с теми, кто её будет решать.</p>
       </article>
       <article class="card why" data-r>
         <span class="why__n">04</span>
-        <h3>Масштабируется</h3>
-        <p>Начинаем с одной автоматизации, соединяем остальные процессы.</p>
+        <h3>Растёт вместе с бизнесом</h3>
+        <p>Начинаем с одного процесса и подключаем остальные, когда первый уже приносит результат.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============================== 6. ЦЕНЫ ============================== -->
+<!-- ============================== 6. ИНСТРУМЕНТЫ (второстепенный блок) ============================== -->
+<section class="sec sec--tight" id="tech">
+  <div class="wrap">
+    <div class="tech" data-r>
+      <div class="tech__head">
+        <span class="label">Инструменты</span>
+        <h3>Чем решаем задачу</h3>
+        <p class="fine">Разбираться в этом необязательно — подберём подходящее сами и объясним простыми словами. Технологии здесь способ решить задачу бизнеса, а не продукт.</p>
+      </div>
+      <!-- << ИНСТРУМЕНТЫ >> две бегущие строки; список правится как обычно, копии для цикла добавляет скрипт -->
+      <div class="tech__lists">
+        <div class="tech__row">
+          <div class="tech__track" data-marquee>
+            <span>AI-агенты</span>
+            <span>Telegram-боты</span>
+            <span>Чат на сайте</span>
+            <span>Битрикс24</span>
+            <span>amoCRM</span>
+          </div>
+        </div>
+        <div class="tech__row tech__row--rev">
+          <div class="tech__track" data-marquee>
+            <span>Google Таблицы</span>
+            <span>Интеграции по API</span>
+            <span>Вебхуки</span>
+            <span>n8n</span>
+            <span>База знаний по вашим документам</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 7. ЦЕНЫ ============================== -->
 <!-- << ЦЕНЫ >> суммы и состав пакетов — здесь -->
 <section class="sec" id="pricing">
   <div class="wrap">
     <div class="sec-head" data-r>
       <span class="label">Цены</span>
-      <h2 data-split>Четыре тарифа — от точечной задачи до системы</h2>
-      <p class="lead">Точную стоимость называем после разбора задачи — до начала работы, без сюрпризов в процессе.</p>
+      <h2 data-split>Стоимость зависит от того, сколько процессов автоматизируем</h2>
+      <p class="lead">Можно начать с одной задачи, но обычно больше всего даёт связка: заявки, ответы клиентам и CRM работают вместе. Точную сумму называем после разбора задачи — до начала работы, без сюрпризов в процессе.</p>
     </div>
 
     <div class="grid4" data-stagger>
       <article class="card price" data-r>
-        <h3>Заявки и продажи</h3>
+        <h3>Одна задача</h3>
         <div class="price__v"><em>от</em>19 900 ₽</div>
         <ul>
-          <li>Сценарий диалога и квалификация</li>
-          <li>Заявки собираются в одну таблицу</li>
+          <li>Автоматизируем один процесс: приём заявок или ответы клиентам</li>
+          <li>Заявки собираются в одном месте</li>
           <li>Уведомления менеджеру</li>
         </ul>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Рассчитать решение</a>
+        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить задачу</a>
       </article>
 
       <article class="card price price--hi" data-r>
-        <span class="price__tag">Популярное</span>
+        <span class="price__tag">Чаще всего берут</span>
         <h3>Сайт + заявки</h3>
         <div class="price__v"><em>от</em>24 900 ₽</div>
         <ul>
-          <li>Лендинг с услугами, ценами, отзывами и кнопкой записи</li>
-          <li>Форма заявки уходит сразу в Telegram</li>
+          <li>Страница с услугами, ценами и кнопкой записи</li>
+          <li>Заявка с формы уходит сразу в Telegram</li>
           <li>Домен и настройка под ключ</li>
           <li>Запуск за 5 дней</li>
         </ul>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--primary btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить</a>
+        <a class="btn btn--primary btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить задачу</a>
       </article>
 
       <article class="card price" data-r>
-        <h3>Система</h3>
+        <span class="price__tag">Оптимальный вариант</span>
+        <h3>Система работы с заявками</h3>
         <div class="price__v"><em>от</em>34 900 ₽</div>
         <ul>
-          <li>Несколько связанных процессов</li>
-          <li>Интеграция с CRM</li>
-          <li>Передача данных между сервисами</li>
+          <li>Приём заявок, ответы клиентам и CRM работают как одна система</li>
+          <li>Данные передаются между сервисами без ручной работы</li>
+          <li>Сценарии под вашу воронку продаж</li>
+          <li>Видно, откуда пришёл клиент и что с заявкой дальше</li>
         </ul>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить</a>
+        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить систему</a>
       </article>
 
       <article class="card price" data-r>
         <h3>Индивидуальное решение</h3>
         <div class="price__v"><em>от</em>79 900 ₽</div>
         <ul>
-          <li>CRM + AI + нужные интеграции</li>
-          <li>Архитектура под процессы бизнеса</li>
-          <li>Расчёт после разбора задачи</li>
+          <li>Автоматизация под сложный или нестандартный процесс</li>
+          <li>CRM, AI-помощник и нужные сервисы в одном контуре</li>
+          <li>Продумываем структуру под то, как работает ваш бизнес</li>
+          <li>План работ и оценка после разбора задачи</li>
         </ul>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Рассчитать решение</a>
+        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить проект</a>
       </article>
     </div>
 
@@ -743,7 +840,7 @@ p{margin:0}
   </div>
 </section>
 
-<!-- ============================== 7. FAQ ============================== -->
+<!-- ============================== 8. FAQ ============================== -->
 <section class="sec sec--alt" id="faq">
   <div class="wrap">
     <div class="sec-head" data-r>
@@ -753,48 +850,57 @@ p{margin:0}
 
     <div class="faq" data-r>
       <details open>
+        <summary>С чего начать, если я не знаю, что автоматизировать?</summary>
+        <div class="faq__c"><p>Просто расскажите, что отнимает больше всего времени или где теряются клиенты. Разберём процесс вместе и предложим, с чего начать выгоднее всего. Это бесплатно и ни к чему не обязывает.</p></div>
+      </details>
+      <details>
         <summary>Сколько длится запуск?</summary>
-        <div class="faq__c"><p>Простое решение — за 2 дня. Бот с индивидуальным сценарием и таблицей заявок — от 5 дней. Точный срок называем после разбора задачи.</p></div>
+        <div class="faq__c"><p>Простое решение — за 2 дня. Решение с индивидуальным сценарием — от 5 дней. Система из нескольких связанных процессов — дольше, срок называем после разбора задачи.</p></div>
       </details>
       <details>
         <summary>Что нужно от меня для старта?</summary>
         <div class="faq__c"><p>Список услуг с ценами и ответы на вопросы, которые вам чаще всего задают. Если чего-то нет под рукой — соберём в разговоре, это занимает минут двадцать.</p></div>
       </details>
       <details>
+        <summary>Нужно ли мне разбираться в технологиях?</summary>
+        <div class="faq__c"><p>Нет. Достаточно рассказать, как сейчас устроена работа с клиентами. Какие инструменты подойдут — наша задача, вам мы объясняем всё простыми словами и показываем на готовом решении.</p></div>
+      </details>
+      <details>
         <summary>Нужен ли мне сайт?</summary>
-        <div class="faq__c"><p>Нет. Бот работает сам: клиент пишет в Telegram, заявка приходит вам. Сайт нужен, только если хотите собирать заявки ещё и с него — тогда подключим форму к тому же боту.</p></div>
-      </details>
-      <details>
-        <summary>Можно доработать существующего бота?</summary>
-        <div class="faq__c"><p>Да, если есть доступ к коду или аккаунту. Посмотрим, на чём он сделан, и скажем прямо, что выгоднее в вашем случае: доработать или собрать заново.</p></div>
-      </details>
-      <details>
-        <summary>А если сценарий нестандартный?</summary>
-        <div class="faq__c"><p>Разберём процесс и предложим решение под него. Если задача выходит за рамки того, что сделаем качественно и в срок, скажем сразу, а не в середине работы.</p></div>
+        <div class="faq__c"><p>Нет. Решение работает и без сайта: клиент пишет в Telegram, заявка приходит вам. Сайт нужен, только если хотите собирать заявки ещё и с него — тогда подключим форму к той же системе.</p></div>
       </details>
       <details>
         <summary>Работаете с нашей CRM?</summary>
-        <div class="faq__c"><p>Разберём, какие у неё есть API и вебхуки, и скажем прямо, что реально подключить, а что нет.</p></div>
+        <div class="faq__c"><p>Посмотрим, что она позволяет подключить, и честно скажем, что реально автоматизировать, а что нет. Чаще всего работаем с Битрикс24, amoCRM и таблицами.</p></div>
+      </details>
+      <details>
+        <summary>Можно доработать то, что уже сделано?</summary>
+        <div class="faq__c"><p>Да, если есть доступ к коду или аккаунту. Посмотрим, как это собрано, и скажем прямо, что выгоднее в вашем случае: доработать или собрать заново.</p></div>
+      </details>
+      <details>
+        <summary>А если процесс нестандартный?</summary>
+        <div class="faq__c"><p>Разберём его и предложим решение под него. Если задача выходит за рамки того, что сделаем качественно и в срок, скажем сразу, а не в середине работы.</p></div>
       </details>
       <details>
         <summary>Кто вы?</summary>
-        <div class="faq__c"><p>Команда разработчиков, делаем автоматизации для бизнеса. Берём ограниченное число проектов одновременно, чтобы вникать в каждый, а не отдавать шаблон.</p></div>
+        <div class="faq__c"><p>Команда разработчиков, делаем автоматизацию для бизнеса. Берём ограниченное число проектов одновременно, чтобы вникать в каждый, а не отдавать шаблон.</p></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============================== 8. ФИНАЛ ============================== -->
+<!-- ============================== 9. ФИНАЛ ============================== -->
 <section class="sec" id="contact">
   <div class="wrap">
     <div class="final" data-r>
       <span class="label">Начать</span>
-      <h2 data-split>Есть процесс, который хочется автоматизировать?</h2>
-      <p class="lead" style="max-width:560px">Расскажите в двух словах, что отнимает время. Ответим, что здесь можно автоматизировать и с чего начать.</p>
+      <h2 data-split>Расскажите, что хотите автоматизировать</h2>
+      <p class="lead" style="max-width:600px">Предложим решение и оценим стоимость. Достаточно в двух словах описать, что сейчас отнимает время или где теряются заявки — остальное разберём сами.</p>
       <div class="final__cta">
         <!-- << TELEGRAM >> -->
         <a class="btn btn--primary btn--xl" data-magnetic href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Написать в Telegram</a>
       </div>
+      <p class="fine">Разбор задачи и оценка — бесплатно и ни к чему не обязывают.</p>
     </div>
   </div>
 </section>
@@ -830,7 +936,7 @@ p{margin:0}
 </button>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"NEXORIA","description":"Автоматизация бизнес-процессов: AI-агенты, Telegram-боты, интеграции с CRM и API, автоматизация заявок.","areaServed":"RU","sameAs":["https://t.me/Nexoria_studio","https://instagram.com/nexoria_lab"],"knowsAbout":["Автоматизация бизнеса","AI-агенты","Telegram-боты","CRM-интеграции","API-интеграции","Автоматизация заявок"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"NEXORIA","description":"Автоматизация работы с заявками и рутинных процессов для бизнеса: обращения с сайта и из Telegram в одном месте, автоматические ответы клиентам, передача данных в CRM.","areaServed":"RU","sameAs":["https://t.me/Nexoria_studio","https://instagram.com/nexoria_lab"],"knowsAbout":["Автоматизация заявок","Автоматизация бизнес-процессов","AI-агенты","Telegram-боты","CRM-интеграции","Приём заявок с сайта"]}
 </script>
 
 <script>
@@ -945,6 +1051,22 @@ p{margin:0}
       }
     }
   }
+
+  /* ---------- бегущие строки «Инструменты»: копии для бесшовного цикла ---------- */
+  document.querySelectorAll('[data-marquee]').forEach(function(track){
+    if (reduce) return;
+    var items = Array.prototype.slice.call(track.children);
+    if (!items.length) return;
+    var copies = 3;
+    for (var c = 1; c < copies; c++){
+      items.forEach(function(node){
+        var clone = node.cloneNode(true);
+        clone.setAttribute('aria-hidden','true');
+        track.appendChild(clone);
+      });
+    }
+    track.style.setProperty('--copies', copies);
+  });
 
   /* ---------- активный пункт навигации ---------- */
   var links = document.querySelectorAll('.nav a');
