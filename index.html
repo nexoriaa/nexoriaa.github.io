@@ -227,7 +227,7 @@ p{margin:0}
 
 /* карточка работы */
 .work{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.work__prev{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);
+.work__prev{aspect-ratio:16/11;overflow:hidden;border-bottom:1px solid var(--line);
   display:flex;flex-direction:column;justify-content:center;gap:7px;padding:20px}
 .work__body{flex:1;display:flex;flex-direction:column;gap:9px;padding:22px 24px 24px}
 .work__body h3{font-size:19px}
@@ -238,31 +238,16 @@ p{margin:0}
 .work:hover .work__cta{color:var(--accent-2)}
 .work:hover .work__cta svg{transform:translateX(4px)}
 
-/* превью 1 — светлый сайт */
-.work__prev--site{background:linear-gradient(150deg,#fff,var(--bg-2))}
-.pv-chip{align-self:flex-start;font-size:10.5px;font-weight:500;color:var(--accent-2);
-  background:var(--accent-soft);border:1px solid rgba(47,111,237,.25);border-radius:999px;padding:3px 10px}
-.pv-lines{display:flex;flex-direction:column;gap:6px}
-.pv-lines i{height:9px;border-radius:4px;background:var(--fg);opacity:.82}
-.pv-lines i.is-accent{background:var(--accent);opacity:1}
-.pv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.pv-tags span{font-size:11px;font-weight:500;background:#fff;border:1px solid var(--line);border-radius:9px;
-  padding:5px 10px;box-shadow:0 7px 16px -11px rgba(0,0,0,.5);transition:transform .5s var(--ease-out)}
-.pv-tags span:nth-child(1){transform:rotate(-3deg)}
-.pv-tags span:nth-child(2){transform:rotate(2.5deg)}
-.pv-tags span:nth-child(3){transform:rotate(-1.5deg)}
-.work:hover .pv-tags span{transform:rotate(0) translateY(-2px)}
+/* превью — реальный скриншот сайта */
+.work__prev--img{padding:0;background:var(--bg-2)}
+.work__prev--img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 
-/* превью 2 — тёмный интерфейс */
-.work__prev--app{background:#17181B;color:#EDEEF0}
-.pv-app{display:flex;flex-direction:column;gap:3px}
-.pv-app__l{font-size:11px;color:rgba(237,238,240,.5)}
-.pv-app__v{font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.03em}
-.pv-app__d{font-size:11.5px;color:#3FD68C}
-.pv-app__chart{width:100%;height:36px;margin-top:10px;overflow:visible}
-
-/* превью 3 — переписка с ботом */
-.work__prev--chat{background:#17181B;color:#EDEEF0;gap:8px}
+/* превью 3 — переписка с ботом (светлая тема) */
+.work__prev--chat{background:var(--bg-2);color:var(--fg);gap:8px}
+.work__prev--chat .m--in{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 6px 16px -12px rgba(0,0,0,.18)}
+.work__prev--chat .m--out{background:var(--accent-soft);border:1px solid rgba(47,111,237,.28);color:var(--accent-2);align-self:flex-end;border-bottom-right-radius:4px}
+.work__prev--chat .mini span{border-color:rgba(47,111,237,.35);color:var(--accent-2);background:#fff}
+.work__prev--chat .mini span.is-active{background:var(--accent);border-color:var(--accent);color:#fff}
 
 /* ============================== ТАЙМЛАЙН ============================== */
 .timeline{position:relative;padding-left:52px}
@@ -638,14 +623,8 @@ p{margin:0}
     <div class="grid3" data-stagger>
 
       <a class="card work" data-r href="https://nexoriaa.github.io/stack/" target="_blank" rel="noopener">
-        <div class="work__prev work__prev--site" aria-hidden="true">
-          <span class="pv-chip">Онлайн-школа</span>
-          <div class="pv-lines">
-            <i style="width:82%"></i>
-            <i class="is-accent" style="width:60%"></i>
-            <i style="width:44%"></i>
-          </div>
-          <div class="pv-tags"><span>Frontend</span><span>Дизайн</span><span>Данные</span></div>
+        <div class="work__prev work__prev--img" aria-hidden="true">
+          <img src="images/stack-preview.jpg" alt="" loading="lazy">
         </div>
         <div class="work__body">
           <span class="chip">Сайт</span>
@@ -658,15 +637,8 @@ p{margin:0}
       </a>
 
       <a class="card work" data-r href="https://nexoriaa.github.io/finora/" target="_blank" rel="noopener">
-        <div class="work__prev work__prev--app" aria-hidden="true">
-          <div class="pv-app">
-            <span class="pv-app__l">Общий баланс</span>
-            <span class="pv-app__v">159 006 ₽</span>
-            <span class="pv-app__d">+3,2% за месяц</span>
-            <svg class="pv-app__chart" viewBox="0 0 120 34" preserveAspectRatio="none">
-              <path d="M0 27L15 22L30 26L45 15L60 19L75 10L90 13L105 5L120 2" fill="none" stroke="#3FD68C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
+        <div class="work__prev work__prev--img" aria-hidden="true">
+          <img src="images/finora-preview.jpg" alt="" loading="lazy">
         </div>
         <div class="work__body">
           <span class="chip">Интерфейс</span>
@@ -682,7 +654,7 @@ p{margin:0}
         <div class="work__prev work__prev--chat" aria-hidden="true">
           <div class="m m--in">Нужно записать машину</div>
           <div class="m m--out">Выберите услугу:</div>
-          <div class="mini"><span>Диагностика</span><span>ТО</span></div>
+          <div class="mini"><span>Диагностика</span><span class="is-active">ТО</span></div>
           <div class="m m--out">Свободно: завтра 11:00</div>
         </div>
         <div class="work__body">
