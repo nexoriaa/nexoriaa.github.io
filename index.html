@@ -10,7 +10,7 @@
      ГДЕ МЕНЯТЬ:
        1) <title> и <meta name="description"> — прямо ниже.
        2) Название бренда — ищи  << БРЕНД >>  (шапка + подвал).
-       3) Ссылки — ищи  << TELEGRAM >>  и  << INSTAGRAM >>.
+       3) Ссылки — ищи  << TELEGRAM >>.
           Быстро: Ctrl+F по  t.me/Nexoria_studio  и заменить все.
        4) Цены и состав пакетов — секция  << ЦЕНЫ >>.
        5) Услуги, иконки и теги на плитках — секция  << УСЛУГИ >>.
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0A0B'/%3E%3Ccircle cx='9' cy='23' r='3' fill='%233E7BFA'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%233E7BFA'/%3E%3Cpath d='M9 23L23 9' stroke='%233E7BFA' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0A0B'/%3E%3Ccircle cx='9' cy='23' r='3' fill='%23FFFFFF'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23FFFFFF'/%3E%3Cpath d='M9 23L23 9' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,11 +42,11 @@
   --line-hi:rgba(0,0,0,.16);
   --surface:rgba(0,0,0,.04);
   --surface-hi:rgba(0,0,0,.065);
-  --accent:#2F6FED;
-  --accent-2:#104ABC;
-  --accent-3:#4D84F0;
-  --accent-soft:rgba(47,111,237,.13);
-  --accent-glow:rgba(47,111,237,.30);
+  --accent:#1A1A1A;
+  --accent-2:#000000;
+  --accent-3:#8C8C8C;
+  --accent-soft:rgba(0,0,0,.06);
+  --accent-glow:rgba(0,0,0,.22);
   --r:14px; --r-lg:20px; --r-xl:26px;
   --maxw:1180px;
   --ease:cubic-bezier(.2,.7,.3,1);
@@ -54,13 +54,14 @@
   --font:"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{overflow-x:hidden;width:100%;scroll-behavior:auto}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;width:100%}
+html{width:100%;scroll-behavior:auto}
+main{display:block;overflow-x:hidden;width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;width:100%}
 a{color:inherit;text-decoration:none}
 svg{display:block}
 button{font:inherit}
 ul{margin:0}
-::selection{background:rgba(47,111,237,.3);color:var(--fg)}
+::selection{background:rgba(0,0,0,.3);color:var(--fg)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
 
 /* ---- фоновые слои ---- */
@@ -91,6 +92,7 @@ p{margin:0}
 .fine{font-size:13px;color:var(--dim);line-height:1.55}
 .grad-word{background:linear-gradient(100deg,var(--accent) 8%,var(--accent-3) 45%,var(--accent) 82%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 7s ease-in-out infinite}
 @keyframes gradShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.grad-word--mono{background:linear-gradient(100deg,#141414 8%,#8C8C8C 45%,#141414 82%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradShift 7s ease-in-out infinite}
 
 /* ---- пословное появление заголовков ---- */
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
@@ -99,13 +101,17 @@ p{margin:0}
 
 /* ============================== КНОПКИ ============================== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:500;border:1px solid transparent;cursor:pointer;text-align:center;position:relative;overflow:hidden;isolation:isolate;
-  transition:transform .35s var(--ease),box-shadow .4s var(--ease),background .3s,border-color .3s,color .3s}
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),background .22s var(--ease),border-color .22s var(--ease),color .22s var(--ease)}
+.btn:hover{transform:scale(1.03);box-shadow:0 10px 22px -12px rgba(0,0,0,.28)}
 .btn--primary{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;box-shadow:0 8px 26px -12px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,.16)}
 .btn--primary:hover{box-shadow:0 18px 44px -14px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,.24)}
 .btn--primary::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.26),transparent 80%);transform:translateX(-130%);transition:transform .75s var(--ease-out)}
 .btn--primary:hover::after{transform:translateX(130%)}
 .btn--ghost{border-color:var(--line-hi);color:var(--fg);background:var(--surface)}
-.btn--ghost:hover{border-color:rgba(47,111,237,.55);background:var(--accent-soft);color:var(--accent)}
+.btn--ghost:hover{border-color:rgba(0,0,0,.55);background:var(--accent-soft);color:var(--accent)}
+.btn--dark{background:var(--fg);border-color:var(--fg);color:#fff;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease)}
+.btn--dark:hover{background:#000;border-color:#000;color:#fff;transform:scale(1.035);box-shadow:0 14px 30px -14px rgba(0,0,0,.4)}
 .btn--sm{padding:10px 17px;font-size:13.5px;border-radius:9px}
 .btn--wide{width:100%}
 .btn--xl{padding:18px 34px;font-size:16px;border-radius:13px}
@@ -119,7 +125,7 @@ p{margin:0}
 .logo svg{width:20px;height:23px;color:var(--fg);transition:transform .5s var(--ease-out)}
 .logo:hover svg{transform:rotate(-8deg) scale(1.06)}
 .nav{display:flex;gap:2px;margin-left:auto;font-size:14px}
-.nav a{color:var(--muted);padding:8px 13px;border-radius:9px;position:relative;transition:color .25s}
+.nav a{color:var(--muted);padding:8px 13px;border-radius:9px;position:relative;transition:color .2s var(--ease)}
 .nav a::before{content:"";position:absolute;inset:0;border-radius:9px;background:var(--surface-hi);opacity:0;transform:scale(.9);transition:opacity .25s,transform .3s var(--ease)}
 .nav a:hover{color:var(--fg)}
 .nav a:hover::before{opacity:1;transform:none}
@@ -136,7 +142,8 @@ p{margin:0}
 .mnav{display:none;border-top:1px solid var(--line);background:rgba(255,255,255,.98)}
 .mnav.is-open{display:block;animation:mnavIn .35s var(--ease-out)}
 @keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.mnav a{display:block;padding:15px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px}
+.mnav a{display:block;padding:15px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15px;transition:color .2s var(--ease),background .2s var(--ease)}
+.mnav a:hover,.mnav a:focus-visible{color:var(--fg);background:var(--surface)}
 .mnav .btn{margin:16px 22px 20px;width:calc(100% - 44px)}
 
 /* ============================== СЕКЦИИ ============================== */
@@ -159,7 +166,7 @@ p{margin:0}
 .facts{display:flex;flex-wrap:wrap;gap:9px}
 .fact{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);
   font-size:13.5px;color:var(--muted);transition:border-color .35s var(--ease),color .35s var(--ease)}
-.fact:hover{border-color:rgba(47,111,237,.3);color:var(--fg)}
+.fact:hover{border-color:rgba(0,0,0,.3);color:var(--fg)}
 .fact svg{width:16px;height:16px;flex:none;color:var(--accent)}
 
 /* ---- панель-схема потока данных ---- */
@@ -169,7 +176,7 @@ p{margin:0}
   will-change:transform}
 .flow__bar{display:flex;align-items:center;gap:9px;padding:14px 20px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
 .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,111,237,.5)}70%{box-shadow:0 0 0 9px rgba(47,111,237,0)}100%{box-shadow:0 0 0 0 rgba(47,111,237,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,0,0,.5)}70%{box-shadow:0 0 0 9px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
 .flow__body{padding:30px 26px 32px;position:relative}
 .flow__rail{position:absolute;left:32px;top:32px;bottom:32px;width:1px;background:var(--line)}
 .flow__rail i{position:absolute;left:-2px;width:5px;height:5px;border-radius:50%;background:var(--accent);top:0;opacity:0;
@@ -193,8 +200,8 @@ p{margin:0}
   transition:transform .5s var(--ease),border-color .4s,background .4s,box-shadow .5s}
 .card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s;
   border-radius:inherit;overflow:hidden;
-  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(47,111,237,.12),transparent 62%)}
-.card:hover{--lift:-4px;border-color:rgba(47,111,237,.36);background:var(--surface-hi);box-shadow:0 24px 48px -32px rgba(0,0,0,.12)}
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(0,0,0,.12),transparent 62%)}
+.card:hover{--lift:-4px;border-color:rgba(0,0,0,.36);background:var(--surface-hi);box-shadow:0 24px 48px -32px rgba(0,0,0,.12)}
 .card:hover::before{opacity:1}
 .card>*{position:relative;z-index:1}
 
@@ -202,36 +209,49 @@ p{margin:0}
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .bento>.tile:last-child:nth-child(3n+1){grid-column:span 3}
 .tile{padding:30px 27px;display:flex;flex-direction:column;gap:11px}
-.tile__icon{width:46px;height:46px;border-radius:13px;border:1px solid rgba(47,111,237,.3);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;
+.tile__icon{width:46px;height:46px;border-radius:13px;border:1px solid rgba(0,0,0,.3);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;
   transition:transform .5s var(--ease-out),border-color .4s,box-shadow .4s}
 .tile__icon svg{width:21px;height:21px;overflow:visible}
-.tile:hover .tile__icon{transform:translateY(-4px) scale(1.05);border-color:rgba(47,111,237,.55);box-shadow:0 10px 26px -12px var(--accent-glow)}
+.tile:hover .tile__icon{transform:translateY(-4px) scale(1.05);border-color:rgba(0,0,0,.55);box-shadow:0 10px 26px -12px var(--accent-glow)}
 .tile p{color:var(--muted);font-size:14.5px;margin-top:2px}
 .tile__tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
 .tile__tags span{font-size:12.5px;color:var(--muted);background:rgba(0,0,0,.035);border:1px solid var(--line-hi);border-radius:7px;padding:4px 10px;transition:border-color .3s,color .3s}
-.tile:hover .tile__tags span{border-color:rgba(47,111,237,.28);color:var(--accent-2)}
+.tile:hover .tile__tags span{border-color:rgba(0,0,0,.28);color:var(--accent-2)}
 
 /* ============================== ПОРТФОЛИО ============================== */
 /* << ПОРТФОЛИО >> карточки работ — секция id="cases" в разметке */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.chip{align-self:flex-start;font-size:12.5px;font-weight:500;color:var(--accent-2);border:1px solid rgba(47,111,237,.3);border-radius:8px;padding:4px 11px;background:var(--accent-soft)}
-.m{font-size:13px;line-height:1.4;border-radius:11px;padding:8px 12px;max-width:90%}
-.m--in{background:rgba(255,255,255,.09);align-self:flex-start;border-bottom-left-radius:4px}
-.m--out{background:rgba(47,111,237,.15);border:1px solid rgba(47,111,237,.28);align-self:flex-end;border-bottom-right-radius:4px}
-.mini{display:flex;flex-wrap:wrap;gap:6px}
-.mini span{font-size:11.5px;border:1px solid rgba(77,132,240,.45);border-radius:8px;padding:5px 10px;color:var(--accent-3)}
-
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.chip{align-self:flex-start;font-size:12.5px;font-weight:500;color:var(--accent-2);border:1px solid rgba(0,0,0,.3);border-radius:8px;padding:4px 11px;background:var(--accent-soft)}
 /* заголовок секции по центру */
-.sec-head--center{max-width:720px;margin-left:auto;margin-right:auto;text-align:center;align-items:center}
+.sec-head--center{position:relative;max-width:720px;margin-left:auto;margin-right:auto;text-align:center;align-items:center}
 .sec-head--center h2{font-size:clamp(34px,5.2vw,58px)}
+
+/* << ПЛАШКИ >> летающие подписи вокруг заголовка (только на широких экранах) */
+.wrap--wide{max-width:1300px}
+.float-tag{position:absolute;z-index:0;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  font-size:13px;font-weight:500;color:var(--muted);
+  background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 15px;
+  box-shadow:0 14px 30px -20px rgba(0,0,0,.5);
+  transform:rotate(var(--rot,0deg));
+  animation:floatY var(--dur,8s) var(--ease) var(--dl,0s) infinite}
+.float-tag::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--accent)}
+@keyframes floatY{
+  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
+  50%{transform:translateY(-11px) rotate(var(--rot,0deg))}
+}
+.float-tag--a{--rot:-4deg;  --dur:7.5s;--dl:0s;   left:-88px;top:4px}
+.float-tag--b{--rot:3.5deg; --dur:8.5s;--dl:.7s;  right:-95px;top:-16px}
+.float-tag--c{--rot:2.5deg; --dur:9.5s;--dl:1.3s; left:-75px;bottom:-8px}
+.float-tag--d{--rot:-3deg;  --dur:8s;  --dl:.4s;  right:-80px;bottom:6px}
+@media (max-width:1023px){.float-tag{display:none}}
 
 /* карточка работы */
 .work{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.work__prev{aspect-ratio:16/11;overflow:hidden;border-bottom:1px solid var(--line);
-  display:flex;flex-direction:column;justify-content:center;gap:7px;padding:20px}
-.work__body{flex:1;display:flex;flex-direction:column;gap:9px;padding:22px 24px 24px}
-.work__body h3{font-size:19px}
-.work__body p{color:var(--muted);font-size:14.5px}
+.work__prev{aspect-ratio:7/5;overflow:hidden;border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:22px}
+.work__body{flex:1;display:flex;flex-direction:column;gap:10px;padding:24px 26px 26px}
+.work__body h3{font-size:21px}
+.work__body p{color:var(--muted);font-size:15px}
 .work__cta{margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:8px;
   font-size:14.5px;font-weight:500;color:var(--accent);transition:color .3s var(--ease)}
 .work__cta svg{width:15px;height:15px;flex:none;transition:transform .4s var(--ease-out)}
@@ -240,14 +260,9 @@ p{margin:0}
 
 /* превью — реальный скриншот сайта */
 .work__prev--img{padding:0;background:var(--bg-2)}
-.work__prev--img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-
-/* превью 3 — переписка с ботом (светлая тема) */
-.work__prev--chat{background:var(--bg-2);color:var(--fg);gap:8px}
-.work__prev--chat .m--in{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 6px 16px -12px rgba(0,0,0,.18)}
-.work__prev--chat .m--out{background:var(--accent-soft);border:1px solid rgba(47,111,237,.28);color:var(--accent-2);align-self:flex-end;border-bottom-right-radius:4px}
-.work__prev--chat .mini span{border-color:rgba(47,111,237,.35);color:var(--accent-2);background:#fff}
-.work__prev--chat .mini span.is-active{background:var(--accent);border-color:var(--accent);color:#fff}
+.work__prev--img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  transition:transform .7s var(--ease-out)}
+.work:hover .work__prev--img img{transform:scale(1.04)}
 
 /* ============================== ТАЙМЛАЙН ============================== */
 .timeline{position:relative;padding-left:52px}
@@ -261,7 +276,7 @@ p{margin:0}
   transition:border-color .5s var(--ease),box-shadow .5s var(--ease),transform .5s var(--ease)}
 .tl-step::after{content:"";position:absolute;left:-40.5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);opacity:0;transform:translateX(-50%) scale(.4);
   transition:opacity .5s var(--ease),transform .5s var(--ease-out)}
-.tl-step.is-lit::before{border-color:rgba(47,111,237,.6);box-shadow:0 0 0 5px var(--accent-soft)}
+.tl-step.is-lit::before{border-color:rgba(0,0,0,.6);box-shadow:0 0 0 5px var(--accent-soft)}
 .tl-step.is-lit::after{opacity:1;transform:translateX(-50%) scale(1)}
 .tl-step__n{font-size:13px;font-weight:600;color:var(--dim);transition:color .5s}
 .tl-step.is-lit .tl-step__n{color:var(--accent)}
@@ -280,19 +295,21 @@ p{margin:0}
 /* ============================== ЦЕНЫ ============================== */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .price{padding:36px 28px;display:flex;flex-direction:column;gap:18px}
-.price--hi{border-color:rgba(47,111,237,.42);background:linear-gradient(180deg,rgba(47,111,237,.09),rgba(0,0,0,.012) 60%);box-shadow:0 30px 60px -40px var(--accent-glow)}
-@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
-.price--hi::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;z-index:0;pointer-events:none;
-  background:conic-gradient(from var(--ang),transparent 0 62%,rgba(47,111,237,.85) 78%,var(--accent-3) 84%,transparent 92% 100%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
-  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
-  animation:spinAng 7s linear infinite}
-@keyframes spinAng{to{--ang:360deg}}
+.price--hi{background:var(--fg);border-color:var(--fg);box-shadow:0 30px 55px -30px rgba(0,0,0,.5)}
+.price--hi:hover{background:var(--fg);border-color:var(--fg);box-shadow:0 34px 60px -28px rgba(0,0,0,.55)}
+.price--hi h3,.price--hi .price__v{color:#fff}
+.price--hi .price__v em{color:rgba(255,255,255,.6)}
+.price.price--hi ul{color:rgba(255,255,255,.92)}
+.price.price--hi li::before{background:#fff;opacity:.9}
+.price--hi .btn{background:#fff;border-color:#fff;color:var(--fg);box-shadow:none}
+.price--hi .btn:hover{background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.85);color:var(--fg)}
 .price__tag{position:absolute;top:-14px;left:24px;z-index:2;display:inline-flex;align-items:center;
-  font-family:var(--font);font-size:13px;font-weight:500;letter-spacing:-.01em;text-transform:none;white-space:nowrap;
-  padding:5px 14px;border-radius:999px;color:var(--accent-2);
-  background-color:var(--bg);background-image:linear-gradient(180deg,rgba(47,111,237,.16),rgba(47,111,237,.05));
-  border:1px solid rgba(47,111,237,.35)}
+  font-family:var(--font);font-size:13px;font-weight:600;letter-spacing:-.01em;text-transform:none;white-space:nowrap;
+  padding:6px 15px;border-radius:999px;color:var(--fg);
+  background:#fff;border:1px solid var(--line-hi);
+  box-shadow:0 10px 22px -12px rgba(0,0,0,.4);
+  animation:tagPulse 2.8s var(--ease-out) infinite}
+@keyframes tagPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
 .price h3{font-size:21px;min-height:2.6em}
 .price__v{font-size:clamp(30px,3.6vw,40px);font-weight:600;letter-spacing:-.035em;line-height:1.1;white-space:nowrap}
 .price__v--text{font-size:clamp(24px,2.5vw,30px)}
@@ -301,8 +318,8 @@ p{margin:0}
 .price li{display:flex;gap:11px;align-items:flex-start}
 .price li::before{content:"";width:5px;height:5px;margin-top:9px;flex:none;border-radius:2px;background:var(--accent);opacity:.85}
 .price .btn{margin-top:auto}
-.guarantee{margin-top:18px;border:1px solid rgba(47,111,237,.28);border-radius:var(--r);padding:20px 24px;background:linear-gradient(135deg,var(--accent-soft),rgba(47,111,237,.03));display:flex;gap:16px;align-items:flex-start}
-.guarantee__icon{width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid rgba(47,111,237,.3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;box-shadow:0 6px 16px -10px rgba(47,111,237,.5)}
+.guarantee{margin-top:18px;border:1px solid rgba(0,0,0,.28);border-radius:var(--r);padding:20px 24px;background:linear-gradient(135deg,var(--accent-soft),rgba(0,0,0,.03));display:flex;gap:16px;align-items:flex-start}
+.guarantee__icon{width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none;box-shadow:0 6px 16px -10px rgba(0,0,0,.5)}
 .guarantee__icon svg{width:19px;height:19px}
 .guarantee__t{display:flex;flex-direction:column;gap:3px}
 .guarantee b{font-size:15px;font-weight:600;letter-spacing:-.01em}
@@ -326,21 +343,27 @@ p{margin:0}
 
 /* ============================== ФИНАЛ ============================== */
 .final{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(38px,5.5vw,72px);
-  background:linear-gradient(155deg,rgba(47,111,237,.11),rgba(16,74,188,.05) 45%,rgba(0,0,0,.01));
+  background:linear-gradient(155deg,rgba(0,0,0,.11),rgba(0,0,0,.05) 45%,rgba(0,0,0,.01));
   box-shadow:0 50px 110px -70px var(--accent-glow);
   text-align:center;display:flex;flex-direction:column;align-items:center;gap:19px}
 .final::before{content:"";position:absolute;top:-60%;left:50%;transform:translateX(-50%);width:760px;max-width:130%;height:400px;
-  background:radial-gradient(ellipse at center,rgba(47,111,237,.18),transparent 70%);filter:blur(60px);pointer-events:none}
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.18),transparent 70%);filter:blur(60px);pointer-events:none}
 .final>*{position:relative;z-index:1}
 .final h2{max-width:720px}
 .final__cta{margin-top:6px}
 
 /* ============================== ПОДВАЛ ============================== */
-.ftr{border-top:1px solid var(--line);padding:36px 0;position:relative;z-index:1}
-.ftr__in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-.ftr__l{display:flex;gap:24px;font-size:14px;color:var(--muted)}
-.ftr__l a{transition:color .25s}
-.ftr__l a:hover{color:var(--accent)}
+.ftr{border-top:1px solid var(--line);padding:56px 0 28px;position:relative;z-index:1}
+.ftr__in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px}
+.ftr__brand{display:flex;flex-direction:column;gap:10px;max-width:260px}
+.ftr__cols{display:flex;gap:56px;flex-wrap:wrap}
+.ftr__col{display:flex;flex-direction:column;gap:11px;min-width:130px}
+.ftr__h{font-size:13px;font-weight:600;color:var(--fg);letter-spacing:.02em}
+.ftr__col a{position:relative;width:fit-content;font-size:14px;color:var(--muted);transition:color .2s var(--ease)}
+.ftr__col a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.ftr__col a:hover{color:var(--accent)}
+.ftr__col a:hover::after{transform:scaleX(1)}
+.ftr__bottom{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
 .ftr__m{font-size:13px;color:var(--dim)}
 
 /* ============================== КНОПКА НАВЕРХ ============================== */
@@ -350,7 +373,7 @@ p{margin:0}
   opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);
   transition:opacity .4s var(--ease),transform .45s var(--ease-out),visibility .4s,border-color .3s}
 .totop.is-on{opacity:1;visibility:visible;transform:none}
-.totop:hover{border-color:rgba(47,111,237,.5)}
+.totop:hover{border-color:rgba(0,0,0,.5)}
 .totop svg.ring{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);transform:rotate(-90deg);overflow:visible}
 .totop .ring circle{fill:none;stroke-width:1.5}
 .totop .ring .tt-t{stroke:transparent}
@@ -383,7 +406,7 @@ p{margin:0}
 .tech__track span{flex:none;font-size:13px;color:var(--muted);background:rgba(0,0,0,.035);
   border:1px solid var(--line-hi);border-radius:8px;padding:7px 12px;white-space:nowrap;
   transition:border-color .35s var(--ease),color .35s var(--ease),background .35s var(--ease)}
-.tech__track span:hover{color:var(--accent-2);border-color:rgba(47,111,237,.45);background:var(--accent-soft)}
+.tech__track span:hover{color:var(--accent-2);border-color:rgba(0,0,0,.45);background:var(--accent-soft)}
 @media (max-width:860px){.tech{grid-template-columns:1fr}.tech__head .fine{max-width:none}
   .tech__row{-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}}
@@ -399,12 +422,13 @@ p{margin:0}
   .sec-head--split{grid-template-columns:1fr;align-items:start;gap:18px}
 }
 @media (max-width:760px){
-  .nav,.hdr .btn{display:none}
+  .nav,.hdr__in .btn{display:none}
   .burger{display:flex}
   .bento,.grid3,.grid4,.whys{grid-template-columns:1fr}
   .bento>.tile:last-child:nth-child(n){grid-column:auto}
   .hero__cta .btn{flex:1 1 100%}
-  .ftr__in{flex-direction:column;align-items:flex-start;gap:14px}
+  .ftr__in{flex-direction:column;align-items:flex-start;gap:28px}
+  .ftr__cols{gap:40px}
   .totop{right:16px;bottom:16px;width:44px;height:44px}
   .card{transform:none!important}
 }
@@ -614,9 +638,13 @@ p{margin:0}
 <!-- ============================== 3. ПОРТФОЛИО ============================== -->
 <!-- << ПОРТФОЛИО >> карточка = ссылка целиком. Меняешь работу — правишь href, chip, h3 и описание -->
 <section class="sec sec--alt" id="cases">
-  <div class="wrap">
+  <div class="wrap wrap--wide">
     <div class="sec-head sec-head--center" data-r>
-      <h2 data-split>Портфолио</h2>
+      <span class="float-tag float-tag--a" aria-hidden="true">Свой дизайн</span>
+      <span class="float-tag float-tag--b" aria-hidden="true">Работает 24/7</span>
+      <span class="float-tag float-tag--c" aria-hidden="true">Чат-боты</span>
+      <span class="float-tag float-tag--d" aria-hidden="true">Интеграции</span>
+      <h2 data-split><span class="grad-word--mono">Портфолио</span></h2>
       <p class="lead">Сайты, Telegram-боты и решения для автоматизации бизнеса</p>
     </div>
 
@@ -651,11 +679,8 @@ p{margin:0}
       </a>
 
       <a class="card work" data-r href="https://t.me/VAGHealer_Bot" target="_blank" rel="noopener">
-        <div class="work__prev work__prev--chat" aria-hidden="true">
-          <div class="m m--in">Нужно записать машину</div>
-          <div class="m m--out">Выберите услугу:</div>
-          <div class="mini"><span>Диагностика</span><span class="is-active">ТО</span></div>
-          <div class="m m--out">Свободно: завтра 11:00</div>
+        <div class="work__prev work__prev--img" aria-hidden="true">
+          <img src="images/bot-preview.png" alt="" loading="lazy">
         </div>
         <div class="work__body">
           <span class="chip">Telegram-бот</span>
@@ -683,6 +708,9 @@ p{margin:0}
     </div>
 
     <div class="timeline" data-r>
+      <span class="float-tag" aria-hidden="true" style="right:16px;top:20px;--rot:-3deg;--dur:8s;--dl:.4s">Разбор — бесплатно</span>
+      <span class="float-tag" aria-hidden="true" style="right:16px;top:270px;--rot:2.5deg;--dur:9.5s;--dl:1.3s">Прозрачные этапы</span>
+      <span class="float-tag" aria-hidden="true" style="right:16px;top:520px;--rot:-4deg;--dur:7.5s;--dl:0s">Запуск от 5 дней</span>
       <div class="timeline__line" id="timelineLine"></div>
 
       <div class="tl-step">
@@ -803,6 +831,9 @@ p{margin:0}
 <!-- << ЦЕНЫ >> суммы и состав пакетов — здесь -->
 <section class="sec" id="pricing">
   <div class="wrap">
+    <span class="float-tag" aria-hidden="true" style="right:24px;top:0px;--rot:-3deg;--dur:8s;--dl:.4s">Цена — до старта работ</span>
+    <span class="float-tag" aria-hidden="true" style="right:280px;top:150px;--rot:3.5deg;--dur:8.5s;--dl:.7s">Оплата по этапам</span>
+    <span class="float-tag" aria-hidden="true" style="right:40px;top:290px;--rot:2.5deg;--dur:9.5s;--dl:1.3s">Фиксированная цена</span>
     <div class="sec-head" data-r>
       <span class="label">Цены</span>
       <h2 data-split>Стоимость зависит от того, сколько процессов автоматизируем</h2>
@@ -823,7 +854,7 @@ p{margin:0}
       </article>
 
       <article class="card price price--hi" data-r>
-        <span class="price__tag">Чаще всего берут</span>
+        <span class="price__tag">Популярный выбор</span>
         <h3>Сайт + заявки</h3>
         <div class="price__v"><em>от</em>24 900 ₽</div>
         <ul>
@@ -837,7 +868,7 @@ p{margin:0}
       </article>
 
       <article class="card price" data-r>
-        <span class="price__tag">Оптимальный вариант</span>
+        <span class="price__tag">Для растущего бизнеса</span>
         <h3>Система работы с заявками</h3>
         <div class="price__v"><em>от</em>34 900 ₽</div>
         <ul>
@@ -847,7 +878,7 @@ p{margin:0}
           <li>Видно, откуда пришёл клиент и что с заявкой дальше</li>
         </ul>
         <!-- << TELEGRAM >> -->
-        <a class="btn btn--ghost btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить систему</a>
+        <a class="btn btn--dark btn--wide" href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Обсудить систему</a>
       </article>
 
       <article class="card price" data-r>
@@ -947,20 +978,37 @@ p{margin:0}
 </main>
 
 <!-- ============================== ПОДВАЛ ============================== -->
-<footer class="ftr">
-  <div class="wrap ftr__in">
-    <!-- << БРЕНД >> -->
-    <a href="#top" class="logo">
-      <svg viewBox="0 0 44 52" fill="currentColor" aria-hidden="true"><path d="M4 52V0h9l18 30V0h9v52h-9L13 22v30H4z"/></svg>
-      NEXORIA
-    </a>
-    <div class="ftr__l">
-      <!-- << TELEGRAM >> -->
-      <a href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Telegram</a>
-      <!-- << INSTAGRAM >> -->
-      <a href="https://instagram.com/nexoria_lab" target="_blank" rel="noopener">Instagram</a>
+<footer class="ftr" data-r>
+  <div class="wrap">
+    <div class="ftr__in">
+      <div class="ftr__brand">
+        <!-- << БРЕНД >> -->
+        <a href="#top" class="logo">
+          <svg viewBox="0 0 44 52" fill="currentColor" aria-hidden="true"><path d="M4 52V0h9l18 30V0h9v52h-9L13 22v30H4z"/></svg>
+          NEXORIA
+        </a>
+        <p class="fine">Работаем онлайн</p>
+      </div>
+      <div class="ftr__cols">
+        <div class="ftr__col">
+          <span class="ftr__h">Навигация</span>
+          <a href="#services">Автоматизация</a>
+          <a href="#cases">Примеры</a>
+          <a href="#process">Процесс</a>
+          <a href="#pricing">Цены</a>
+          <a href="#faq">Вопросы</a>
+        </div>
+        <div class="ftr__col">
+          <span class="ftr__h">Контакты</span>
+          <!-- << TELEGRAM >> -->
+          <a href="https://t.me/Nexoria_studio" target="_blank" rel="noopener">Telegram</a>
+          <p class="fine">Отвечаю в течение 10 минут</p>
+        </div>
+      </div>
     </div>
-    <div class="ftr__m">Работаем онлайн · © <span id="year">2026</span> NEXORIA</div>
+    <div class="ftr__bottom">
+      <span class="ftr__m">© <span id="year">2026</span> NEXORIA</span>
+    </div>
   </div>
 </footer>
 
@@ -975,7 +1023,7 @@ p{margin:0}
 </button>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"NEXORIA","description":"Автоматизация работы с заявками и рутинных процессов для бизнеса: обращения с сайта и из Telegram в одном месте, автоматические ответы клиентам, передача данных в CRM.","areaServed":"RU","sameAs":["https://t.me/Nexoria_studio","https://instagram.com/nexoria_lab"],"knowsAbout":["Автоматизация заявок","Автоматизация бизнес-процессов","AI-агенты","Telegram-боты","CRM-интеграции","Приём заявок с сайта"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"NEXORIA","description":"Автоматизация работы с заявками и рутинных процессов для бизнеса: обращения с сайта и из Telegram в одном месте, автоматические ответы клиентам, передача данных в CRM.","areaServed":"RU","sameAs":["https://t.me/Nexoria_studio"],"knowsAbout":["Автоматизация заявок","Автоматизация бизнес-процессов","AI-агенты","Telegram-боты","CRM-интеграции","Приём заявок с сайта"]}
 </script>
 
 <script>
